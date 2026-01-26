@@ -4,7 +4,7 @@
       {
         "pole": "Sciences fondamentales",
         "matieres": [
-          { "code": "AnMa111", "nom": "Algebra", "coeff_ue": 40 },
+          { "code": "AnMa111", "nom": "Algebre", "coeff_ue": 40 },
           { "code": "AnMa112", "nom": "Analysis", "coeff_ue": 40 },
           { "code": "AnMa110p", "nom": "Science and methodology immersion", "coeff_ue": 20 }
         ]
@@ -157,7 +157,7 @@
   "AERO 3": {
     "Semestre 1": [
       {
-        "pole": "Sciences fondamentales",
+        "pole": "Sciences fondamentales 1",
         "matieres": [
           { "code": "Ma312", "nom": "Analyse harmonique pour l'ingénieur", "coeff_ue": 33 },
           { "code": "Ma316", "nom": "Optimisation convexe", "coeff_ue": 34 },
@@ -165,15 +165,21 @@
         ]
       },
       {
-        "pole": "Sciences de l’ingénieur",
+        "pole": "Sciences de l’ingénieur : PSITC 31",
         "matieres": [
           { "code": "En311", "nom": "Transferts thermiques 1", "coeff_ue": 39 },
           { "code": "Mé311", "nom": "Mécanique générale 1", "coeff_ue": 41 },
-          { "code": "Mé313", "nom": "CAO 1 – Conception mécanique assistée (CATIA)", "coeff_ue": 20 },
+          { "code": "Mé313", "nom": "CAO 1 – Conception mécanique assistée (CATIA)", "coeff_ue": 20 }
+        ]
+      },
+      {
+        "pole": "Sciences de l’ingénieur : PSITC 32",
+        "matieres": [
           { "code": "In311", "nom": "Initiation aux bases de données", "coeff_ue": 26 },
           { "code": "Au311", "nom": "Automatique des systèmes dynamiques linéaires", "coeff_ue": 38 },
           { "code": "El311", "nom": "Électrotechnique et génération électrique embarquée 1", "coeff_ue": 36 }
         ]
+
       },
       {
         "pole": "Aéronautique et spatial",
@@ -197,7 +203,7 @@
     ],
     "Semestre 2": [
       {
-        "pole": "Signaux et Systèmes Aérospatiaux",
+        "pole": "Science de l'ingénieur : Signaux et Systèmes Aérospatiaux",
         "matieres": [
           { "code": "In322", "nom": "Systèmes d'exploitation de base", "coeff_ue": 22 },
           { "code": "In323", "nom": "Programmation en langage C++", "coeff_ue": 32 },
@@ -213,7 +219,7 @@
         ]
       },
       {
-        "pole": "Véhicules Aérospatiaux",
+        "pole": "Science de l'ingénieur : Véhicules Aérospatiaux",
         "matieres": [
           { "code": "Mé321", "nom": "Mécanique générale 2", "coeff_ue": 19 },
           { "code": "Ma327", "nom": "Modélisation et simulation numérique. Application Véhicules", "coeff_ue": 20 },

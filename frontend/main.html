@@ -49,7 +49,7 @@
                     <div class="pole-header">
                         <h3>Pôle : {{ p.nom or p.pole }}</h3>
                         <div class="average-badge">
-                            Moyenne : {{ moyennes.get(p.nom, moyennes.get(p.pole, "N/A")) }}
+                            Moyenne Pôle : <strong>{{ moyennes_poles.get(p.nom, moyennes_poles.get(p.pole, "N/A")) }}</strong>
                         </div>
                     </div>
 
@@ -59,7 +59,7 @@
                                 <tr>
                                     <th>Code</th>
                                     <th>Matière</th>
-                                    <th>Notes & Saisie</th>
+                                    <th>Moyenne</th> <th>Notes & Saisie</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -67,6 +67,9 @@
                                 <tr>
                                     <td class="code-cell">{{ m.code }}</td>
                                     <td>{{ m.nom }}</td>
+                                    <td class="matiere-moyenne-cell">
+                                        <strong>{{ moyennes_matieres.get(m.code, "N/A") }}</strong>
+                                    </td>
                                     <td>
                                         <div class="existing-notes">
                                             {% set notes_m = notes_enregistrees.get(m.code, []) %}

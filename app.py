@@ -104,28 +104,32 @@ def logout():
 @login_required
 def index():
     data = charger_json(PATH_DATA)
-    # On récupère les notes depuis la DB au lieu du JSON
     notes_enregistrees = get_notes_dict_for_user(current_user.id)
     
     annees = list(data.keys())
     poles_a_afficher = []
-    moyennes_recap = {}
+    
+    # On initialise les deux dictionnaires vides
+    moyennes_poles = {}
+    moyennes_matieres = {}
     
     annee_sel = request.form.get('annee') or request.args.get('annee')
     sem_sel = request.form.get('semestre') or request.args.get('semestre')
     
     if annee_sel and sem_sel:
         poles_a_afficher = data.get(annee_sel, {}).get(sem_sel, [])
-        # Pour le calcul, on peut créer un fichier temporaire ou adapter calculer_moyennes_semestre
-        # Ici on simule l'usage de l'ancien script en lui passant le dictionnaire
-        moyennes_recap = calculer_moyennes_semestre(PATH_DATA, notes_enregistrees, annee_sel, sem_sel)
+        # On récupère le dictionnaire global contenant les deux types de moyennes
+        res = calculer_moyennes_semestre(PATH_DATA, notes_enregistrees, annee_sel, sem_sel)
+        moyennes_poles = res['poles']
+        moyennes_matieres = res['matieres']
 
     return render_template('main.html', 
                            annees=annees, 
                            poles=poles_a_afficher, 
                            annee_sel=annee_sel, 
                            sem_sel=sem_sel,
-                           moyennes=moyennes_recap,
+                           moyennes_poles=moyennes_poles,    # Changé
+                           moyennes_matieres=moyennes_matieres, # Ajouté
                            notes_enregistrees=notes_enregistrees,
                            email=current_user.email)
 

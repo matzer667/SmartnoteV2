@@ -10,35 +10,44 @@ def calculer_moyennes_semestre(path_data, notes_source, annee_sel, sem_sel):
         data = path_data
 
     # 2. Gestion de la source des notes
-    if isinstance(notes_source, str):
-        if os.path.exists(notes_source):
-            with open(notes_source, 'r', encoding='utf-8') as f:
-                notes_enregistrees = json.load(f)
-        else:
-            notes_enregistrees = {}
-    else:
-        notes_enregistrees = notes_source
+    notes_enregistrees = notes_source if isinstance(notes_source, dict) else {}
+    if isinstance(notes_source, str) and os.path.exists(notes_source):
+        with open(notes_source, 'r', encoding='utf-8') as f:
+            notes_enregistrees = json.load(f)
 
-    moyennes_recap = {}
+    moy_poles = {}
+    moy_matieres = {}
+    
     poles = data.get(annee_sel, {}).get(sem_sel, [])
 
     for pole in poles:
-        # On utilise 'nom' (doit correspondre à la clé dans data.json)
         nom_pole = pole.get('nom') or pole.get('pole') 
-        total_points = 0
-        total_coefs = 0
+        total_points_pole = 0
+        total_coefs_pole = 0
         
         for matiere in pole.get('matieres', []):
             code = matiere.get('code')
+            p_mat = 0
+            c_mat = 0
+            
             if code in notes_enregistrees:
                 for n in notes_enregistrees[code]:
-                    # Conversion forcée en float pour éviter les erreurs de type
-                    total_points += float(n['note']) * float(n['coef'])
-                    total_coefs += float(n['coef'])
+                    p_mat += float(n['note']) * float(n['coef'])
+                    c_mat += float(n['coef'])
+                
+                if c_mat > 0:
+                    moy_m = round(p_mat / c_mat, 2)
+                    moy_matieres[code] = moy_m
+                    total_points_pole += p_mat
+                    total_coefs_pole += c_mat
+                else:
+                    moy_matieres[code] = "N/A"
+            else:
+                moy_matieres[code] = "N/A"
         
-        if total_coefs > 0:
-            moyennes_recap[nom_pole] = round(total_points / total_coefs, 2)
+        if total_coefs_pole > 0:
+            moy_poles[nom_pole] = round(total_points_pole / total_coefs_pole, 2)
         else:
-            moyennes_recap[nom_pole] = "N/A" # Plus simple pour le HTML
+            moy_poles[nom_pole] = "N/A"
             
-    return moyennes_recap
+    return {"poles": moy_poles, "matieres": moy_matieres}
