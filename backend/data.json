@@ -1,0 +1,235 @@
+{
+  "AERO 1": {
+    "Semestre 1": [
+      {
+        "pole": "Sciences fondamentales",
+        "matieres": [
+          { "code": "AnMa111", "nom": "Algebra", "coeff_ue": 40 },
+          { "code": "AnMa112", "nom": "Analysis", "coeff_ue": 40 },
+          { "code": "AnMa110p", "nom": "Science and methodology immersion", "coeff_ue": 20 }
+        ]
+      },
+      {
+        "pole": "Sciences de l’ingénieur",
+        "matieres": [
+          { "code": "AnPhv111", "nom": "Point mechanics 1", "coeff_ue": 49 },
+          { "code": "AnEl111", "nom": "Electrokinetics 1", "coeff_ue": 31 },
+          { "code": "AnIn111", "nom": "Algorithmic & Python language 1", "coeff_ue": 20 }
+        ]
+      },
+      {
+        "pole": "Aéronautique et Spatial",
+        "matieres": [
+          { "code": "AnAé110", "nom": "Introduction to sustainable engineering (incl. Climate Fresco)", "coeff_ue": 25 },
+          { "code": "AnAé111", "nom": "Introduction to the world of aeronautics and space", "coeff_ue": 41 },
+          { "code": "AnGp111", "nom": "Aerospace Projects", "coeff_ue": 34 }
+        ]
+      },
+      {
+        "pole": "Sciences Humaines et Langues",
+        "matieres": [
+          { "code": "AnSh111", "nom": "History of Aerospace Science and Technology", "coeff_ue": 34 },
+          { "code": "AnSh113", "nom": "Impact Project", "coeff_ue": 19 },
+          { "code": "AnSh112", "nom": "Voltaire teaching", "coeff_ue": 0 },
+          { "code": "AnLa111", "nom": "English for aeronautics and space 1", "coeff_ue": 47 }
+        ]
+      }
+    ],
+    "Semestre 2": [
+      {
+        "pole": "Sciences fondamentales",
+        "matieres": [
+          { "code": "AnMa121", "nom": "Analysis and probabilities", "coeff_ue": 54 },
+          { "code": "AnMa122", "nom": "Algebra & geometry", "coeff_ue": 46 }
+        ]
+      },
+      {
+        "pole": "Sciences de l’ingénieur",
+        "matieres": [
+          { "code": "AnPhv121", "nom": "Point mechanics 2", "coeff_ue": 37 },
+          { "code": "AnPhv122", "nom": "Experimental physics: geometric optics and calorimetry", "coeff_ue": 8 },
+          { "code": "AnEl121", "nom": "Electrokinetics 2", "coeff_ue": 25 },
+          { "code": "AnIn121", "nom": "Algorithmic & Python language 2", "coeff_ue": 14 },
+          { "code": "AnMé121", "nom": "Introduction to mechanical design engineering", "coeff_ue": 16 }
+        ]
+      },
+      {
+        "pole": "Aéronautique et Spatial",
+        "matieres": [
+          { "code": "AnAé121", "nom": "General aeronautics", "coeff_ue": 67 },
+          { "code": "AnGp122", "nom": "Aerospace Projects", "coeff_ue": 33 }
+        ]
+      },
+      {
+        "pole": "Sciences Humaines et Langues",
+        "matieres": [
+          { "code": "AnSh121", "nom": "History of Aerospace Science and Technology – TEDS Badges", "coeff_ue": 28 },
+          { "code": "AnSh123", "nom": "Impact Project", "coeff_ue": 21 },
+          { "code": "AnSh122", "nom": "Voltaire teaching", "coeff_ue": 11 },
+          { "code": "AnLa121", "nom": "English for aeronautics and space 2", "coeff_ue": 26 },
+          { "code": "AnLa124", "nom": "Preparation TOEIC / Advanced English", "coeff_ue": 13 },
+          { "code": "AnLa123", "nom": "TOEIC (Minimum level 550)", "coeff_ue": 1 }
+        ]
+      }
+    ]
+  },
+  "AERO 2": {
+    "Semestre 1": [
+      {
+        "pole": "Sciences fondamentales",
+        "matieres": [
+          { "code": "Ma211", "nom": "Analyse : calcul différentiel", "coeff_ue": 55 },
+          { "code": "Ma212", "nom": "Analyse : intégrales multiples et curvilignes", "coeff_ue": 45 }
+        ]
+      },
+      {
+        "pole": "Sciences de l’ingénieur",
+        "matieres": [
+          { "code": "Phv211", "nom": "Thermodynamique 1", "coeff_ue": 28 },
+          { "code": "Mé213", "nom": "Résistance des matériaux 1", "coeff_ue": 31 },
+          { "code": "Mé212", "nom": "Mécanique du solide 1", "coeff_ue": 28 },
+          { "code": "Mé211", "nom": "CAO 1 – Conception mécanique assistée", "coeff_ue": 13 },
+          { "code": "Phs213", "nom": "Électromagnétisme 1", "coeff_ue": 28 },
+          { "code": "Phv212", "nom": "Physique des ondes 1 : ondes mécaniques, acoustiques", "coeff_ue": 30 },
+          { "code": "El211", "nom": "Électronique 1", "coeff_ue": 24 },
+          { "code": "In211", "nom": "Python 1 – Pratique de la programmation", "coeff_ue": 18 }
+        ]
+      },
+      {
+        "pole": "Aéronautique et Spatial",
+        "matieres": [
+          { "code": "Aé211", "nom": "Aéronautique 1", "coeff_ue": 28 },
+          { "code": "Gp211", "nom": "Grand projet programmation", "coeff_ue": 27 },
+          { "code": "Gp212", "nom": "Projet ROVER (S1)", "coeff_ue": 45 }
+        ]
+      },
+      {
+        "pole": "Sciences Humaines et Langues",
+        "matieres": [
+          { "code": "Sh211", "nom": "Éthique de l'ingénieur aérospatial / Badges TEDS", "coeff_ue": 30 },
+          { "code": "Sh212", "nom": "Enseignement Voltaire", "coeff_ue": 0 },
+          { "code": "La211", "nom": "English for aircraft engines", "coeff_ue": 41 },
+          { "code": "La212", "nom": "Anglais : préparation TOEIC / Advanced English", "coeff_ue": 29 }
+        ]
+      }
+    ],
+    "Semestre 2": [
+      {
+        "pole": "Sciences fondamentales",
+        "matieres": [
+          { "code": "Ma221", "nom": "Algèbre linéaire et bilinéaire", "coeff_ue": 42 },
+          { "code": "Ma222", "nom": "Analyses et probabilités", "coeff_ue": 44 },
+          { "code": "Ma223", "nom": "Génie mathématique : résolution numérique (Python)", "coeff_ue": 14 }
+        ]
+      },
+      {
+        "pole": "Sciences de l’ingénieur",
+        "matieres": [
+          { "code": "Phv221", "nom": "Thermodynamique 2", "coeff_ue": 29 },
+          { "code": "Mé223", "nom": "Résistance des matériaux 2", "coeff_ue": 28 },
+          { "code": "Mé222", "nom": "Mécanique du solide 2", "coeff_ue": 27 },
+          { "code": "Mé221", "nom": "CAO 2 – Conception mécanique assistée", "coeff_ue": 16 },
+          { "code": "In222", "nom": "Python 2 – Pratique de la programmation", "coeff_ue": 17 },
+          { "code": "El221", "nom": "Électronique 2", "coeff_ue": 36 },
+          { "code": "Phs224", "nom": "Électromagnétisme 2", "coeff_ue": 22 },
+          { "code": "Phs225", "nom": "Physique des ondes 2 : ondes électromagnétiques", "coeff_ue": 26 }
+        ]
+      },
+      {
+        "pole": "Aéronautique et Spatial",
+        "matieres": [
+          { "code": "Aé221", "nom": "Aéronautique 2 – Bureau Enquête et Accident", "coeff_ue": 16 },
+          { "code": "Phv222", "nom": "Physique de l’Univers", "coeff_ue": 19 },
+          { "code": "Mf221", "nom": "Mécanique des fluides", "coeff_ue": 25 },
+          { "code": "Gp222", "nom": "Projet ROVER (S2)", "coeff_ue": 39 }
+        ]
+      },
+      {
+        "pole": "Sciences Humaines et Langues",
+        "matieres": [
+          { "code": "Sh222", "nom": "Enseignement Voltaire", "coeff_ue": 22 },
+          { "code": "La221", "nom": "Business English & Interculturality", "coeff_ue": 63 },
+          { "code": "La223", "nom": "TOEIC – score minimal 650", "coeff_ue": 15 }
+        ]
+      }
+    ]
+  },
+  "AERO 3": {
+    "Semestre 1": [
+      {
+        "pole": "Sciences fondamentales",
+        "matieres": [
+          { "code": "Ma312", "nom": "Analyse harmonique pour l'ingénieur", "coeff_ue": 33 },
+          { "code": "Ma316", "nom": "Optimisation convexe", "coeff_ue": 34 },
+          { "code": "Ma315", "nom": "Introduction aux Sciences des données", "coeff_ue": 33 }
+        ]
+      },
+      {
+        "pole": "Sciences de l’ingénieur",
+        "matieres": [
+          { "code": "En311", "nom": "Transferts thermiques 1", "coeff_ue": 39 },
+          { "code": "Mé311", "nom": "Mécanique générale 1", "coeff_ue": 41 },
+          { "code": "Mé313", "nom": "CAO 1 – Conception mécanique assistée (CATIA)", "coeff_ue": 20 },
+          { "code": "In311", "nom": "Initiation aux bases de données", "coeff_ue": 26 },
+          { "code": "Au311", "nom": "Automatique des systèmes dynamiques linéaires", "coeff_ue": 38 },
+          { "code": "El311", "nom": "Électrotechnique et génération électrique embarquée 1", "coeff_ue": 36 }
+        ]
+      },
+      {
+        "pole": "Aéronautique et spatial",
+        "matieres": [
+          { "code": "Mf311", "nom": "Aérodynamique 1", "coeff_ue": 26 },
+          { "code": "Aé312", "nom": "Mécanique du vol – Performance, équilibrage statique", "coeff_ue": 26 },
+          { "code": "Aé314", "nom": "Décarboner l'aéronautique (incl. Fresqu'Aéro)", "coeff_ue": 9 },
+          { "code": "Gp311", "nom": "Projet aérospatial", "coeff_ue": 27 },
+          { "code": "Sp311", "nom": "Introduction aux systèmes spatiaux", "coeff_ue": 12 }
+        ]
+      },
+      {
+        "pole": "Sciences humaines et langues",
+        "matieres": [
+          { "code": "Mi311", "nom": "Conduite et gestion de projet", "coeff_ue": 39 },
+          { "code": "Sh313", "nom": "Sulitest", "coeff_ue": 4 },
+          { "code": "La311", "nom": "General engineering English 1", "coeff_ue": 30 },
+          { "code": "La312", "nom": "Préparation TOEIC – Advanced English", "coeff_ue": 27 }
+        ]
+      }
+    ],
+    "Semestre 2": [
+      {
+        "pole": "Signaux et Systèmes Aérospatiaux",
+        "matieres": [
+          { "code": "In322", "nom": "Systèmes d'exploitation de base", "coeff_ue": 22 },
+          { "code": "In323", "nom": "Programmation en langage C++", "coeff_ue": 32 },
+          { "code": "Au322", "nom": "Programmation microcontrôleurs", "coeff_ue": 21 },
+          { "code": "In324", "nom": "IA embarquée pour l'aérospatial", "coeff_ue": 25 },
+          { "code": "Ma335", "nom": "Modélisation et simulation numérique. Application Systèmes", "coeff_ue": 36 },
+          { "code": "Au323", "nom": "Représentations d’état des systèmes linéaires", "coeff_ue": 18 },
+          { "code": "Té322", "nom": "Traitement numérique du signal", "coeff_ue": 26 },
+          { "code": "El321", "nom": "Électronique numérique", "coeff_ue": 23 },
+          { "code": "El322", "nom": "Logique programmée sur FPGA", "coeff_ue": 27 },
+          { "code": "Té321", "nom": "Systèmes de télécommunications aéronautiques", "coeff_ue": 23 },
+          { "code": "In321", "nom": "Réseaux embarqués pour l'aéronautique", "coeff_ue": 27 }
+        ]
+      },
+      {
+        "pole": "Véhicules Aérospatiaux",
+        "matieres": [
+          { "code": "Mé321", "nom": "Mécanique générale 2", "coeff_ue": 19 },
+          { "code": "Ma327", "nom": "Modélisation et simulation numérique. Application Véhicules", "coeff_ue": 20 },
+          { "code": "Mé322", "nom": "Méthode des éléments finis", "coeff_ue": 11 },
+          { "code": "Mé323", "nom": "CAO 2 (CATIA)", "coeff_ue": 13 },
+          { "code": "Mé324", "nom": "Élasticité linéaire", "coeff_ue": 24 },
+          { "code": "Mé325", "nom": "Science des matériaux", "coeff_ue": 13 },
+          { "code": "En323", "nom": "Introduction aux turbomachines", "coeff_ue": 35 },
+          { "code": "En322", "nom": "Transferts thermiques 2", "coeff_ue": 26 },
+          { "code": "En324", "nom": "Thermodynamique appliquée", "coeff_ue": 29 },
+          { "code": "Au324", "nom": "Modélisation et analyse dynamique des aéronefs", "coeff_ue": 22 },
+          { "code": "Mf321", "nom": "Aérodynamique 2", "coeff_ue": 37 },
+          { "code": "Mf322", "nom": "Initiation à la CFD", "coeff_ue": 18 },
+          { "code": "Aé323", "nom": "Introduction au vol vertical", "coeff_ue": 23 }
+        ]
+      }
+    ]
+  }
+}
