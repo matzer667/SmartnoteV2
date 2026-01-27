@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Smartnote - Authentification</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="auth-box">
+        <img src="/static/images/smartnotelogoheader.png" alt="Logo" class="auth-logo">
+        
+        <h2>Connexion</h2>
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <p class="flash-error">{{ messages[0] }}</p>
+          {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <input type="email" name="email" placeholder="Adresse email" required>
+            <input type="password" name="password" placeholder="Mot de passe" required>
+            
+            <div class="auth-buttons">
+                <button type="submit" name="action" value="login" class="btn-login">Se connecter</button>
+                <button type="submit" name="action" value="register" class="btn-reg">Créer un compte</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
