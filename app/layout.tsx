@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     siteName: "SmartNote",
     images: [
       {
-        url: "/smartnote_preview.png", 
+        url: "/public/smartnote_preview.png", 
         width: 1200,
         height: 630,
         alt: "Aperçu de SmartNote",
