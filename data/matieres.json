@@ -1,0 +1,47 @@
+{
+  "AERO 1": {
+    "Semestre 1": {
+      "Aéronautique": [
+        {
+          "pole": "SCIENCES FONDAMENTALES",
+          "matieres": [
+            { "nom": "ALGEBRE", "code": "AnMa111", "coeff_ue": 40 },
+            { "nom": "ANALYSIS", "code": "AnMa112", "coeff_ue": 40 },
+            { "nom": "SCIENCE AND METHODOLOGY IMMERSION", "code": "AnMa110p", "coeff_ue": 20 }
+          ]
+        },
+        {
+          "pole": "SCIENCES DE L'INGÉNIEUR",
+          "matieres": [
+            { "nom": "POINT MECHANICS 1", "code": "AnPh111", "coeff_ue": 40 },
+            { "nom": "ELECTROKINETICS 1", "code": "AnEl111", "coeff_ue": 31 },
+            { "nom": "INTRODUCTION TO NUMERICAL SYSTEMS", "code": "AnEl112", "coeff_ue": 29 }
+          ]
+        }
+      ]
+    },
+    "Semestre 2": {
+      "Aéronautique": [
+        {
+          "pole": "SCIENCES PHYSIQUES",
+          "matieres": [
+            { "nom": "THERMODYNAMICS", "code": "AnPh121", "coeff_ue": 50 },
+            { "nom": "OPTICS", "code": "AnPh122", "coeff_ue": 50 }
+          ]
+        }
+      ]
+    }
+  },
+  "AERO 2": {
+    "Semestre 1": {
+      "Aéronautique": [
+        {
+          "pole": "MÉCANIQUE DES FLUIDES",
+          "matieres": [
+            { "nom": "FLUID STATICS", "code": "AnFl211", "coeff_ue": 100 }
+          ]
+        }
+      ]
+    }
+  }
+}
