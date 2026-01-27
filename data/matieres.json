@@ -77,6 +77,60 @@
           ]
         }
       ]
+    },
+    "Semestre 2": {
+      "Prépa Intégrée": [
+        {
+          "pole": "SCIENCES FONDAMENTALES",
+          "matieres": [
+            { "nom": "Analyse : calcul différentiel", "code": "Ma221", "coeff_ue": 42 },
+            { "nom": "Analyse : intégrales multiples et curvilignes", "code": "Ma222", "coeff_ue": 44 },
+            { "nom": "Algèbre : espaces vectoriels et applications linéaires", "code": "Ma223", "coeff_ue": 14}
+          ]
+        },
+        {
+          "pole":"SCIENCES DE L'INGÉNIEUR : UE PSI 23",
+          "matieres": [
+            { "nom": "Thermodynamique 1", "code": "Phv221", "coeff_ue": 29 },
+            { "nom": "Résistance des matériaux 1", "code": "Mé223", "coeff_ue": 28 },
+            { "nom": "Mécanique du solide 1", "code": "Mé222", "coeff_ue": 27 },
+            { "nom": "Conception mécanique assistée par ordinateur 1", "code": "Mé221", "coeff_ue": 16 }
+          ]
+        },
+        {
+          "pole":"SCIENCES DE L'INGÉNIEUR : UE PSI 24",
+          "matieres": [
+            { "nom": "Electromagnétisme 1", "code": "Phs223", "coeff_ue": 17 },
+            { "nom": "Physique des ondes 1 : ondes mécaniques, acoustiques", "code": "El221", "coeff_ue": 36 },
+            { "nom": "Electronique 1", "code": "Phs224", "coeff_ue": 22 },
+            { "nom": "Pratique de la programmation en Python 1", "code": "Ph225", "coeff_ue": 26 }
+          ]
+        },
+        {
+          "pole":"AERONAUTIQUE ET SPATIAL",
+          "matieres": [
+            { "nom": "Aéronautique 1", "code": "Aé221", "coeff_ue": 16 },
+            { "nom": "Grand projet programmation", "code": "Phv222", "coeff_ue": 19 },
+            { "nom": "Projet ROVER", "code": "Mf221", "coeff_ue": 25 },
+            { "nom": "Projet ROVER", "code": "Gp222", "coeff_ue": 39 }
+          ]
+        },
+        {
+          "pole":"SCIENCES HUMAINES ET LANGUES",
+          "matieres": [
+            { "nom": "Ethique de l'ingénieur aérospatial", "code": "Sh222", "coeff_ue": 22 },
+            { "nom": "English for aircraft engines", "code": "La221", "coeff_ue": 63 },
+            { "nom": "Anglais : préparation TOEIC / Advanced english", "code": "La223", "coeff_ue": 15 }
+          ]
+        },
+                {
+          "pole":"CONNAISSANCE DE L'ENTREPRISE ET INSERTION PROFESSIONNELLE",
+          "matieres": [
+            { "nom": "STAGE", "code": "St220", "coeff_ue": 100 }
+
+          ]
+        }
+      ]
     }
   },
     "AERO 3": {
@@ -91,30 +145,145 @@
                     ]
                 },
                 {
-                    "pole" :"SCIENCES FONDAMENTALES 2",
+                    "pole" :"SCIENCES DE L'INGÉNIEUR - TRONC COMMUN : UE PSITC 31",
                     "matieres":[
-                        {"nom": "Mécanique des fluides 1", "code": "Phv311", "coeff_ue": 50},
-                        {"nom": "Thermodynamique statistique", "code": "Phv312", "coeff_ue": 50}
+                        {"nom": "TRANSFERTS THERMIQUES 1", "code": "En311", "coeff_ue": 39},
+                        {"nom": "MÉCANIQUE GÉNÉRALE 1", "code": "Mé311", "coeff_ue": 41},
+                        {"nom": "CONCEPTION MÉCANIQUE ASSISTÉE PAR ORDINATEUR 1", "code": "Mé313", "coeff_ue": 20}
+                    ]
+                },
+                {
+                    "pole" :"SCIENCES DE L'INGÉNIEUR - TRONC COMMUN : UE PSITC 32",
+                    "matieres":[
+                        {"nom": "INITIATION AUX BASES DE DONNÉES", "code": "In311", "coeff_ue": 26},
+                        {"nom": "AUTOMATIQUE DES SYSTÈMES DYNAMIQUES LINÉAIRES", "code": "Au311", "coeff_ue": 28},
+                        {"nom": "ÉLECTROTECHNIQUE ET GÉNÉRATION ÉLECTRIQUE EMBARQUÉE À BORD D'UN AÉRONEF 1", "code": "El311", "coeff_ue": 36}
+                    ]
+                },
+                {
+                    "pole" :"AÉRONAUTIQUE ET SPATIAL",
+                    "matieres":[
+                        {"nom": "AÉRODYNAMIQUE 1", "code": "Mf311", "coeff_ue": 26},
+                        {"nom": "MÉCANIQUE DU VOL - PERFORMANCE, ÉQUILIBRAGE STATIQUE", "code": "Aé312", "coeff_ue": 26},
+                        {"nom": "DÉCARBONER L'AÉRONAUTIQUE : LEVIERS TECHNOLOGIQUES", "code": "Aé314", "coeff_ue": 9},
+                        {"nom": "PROJET AÉROSPATIAL", "code": "Gp311", "coeff_ue": 27},
+                        {"nom": "INTRODUCTION AUX SYSTÈMES SPATIAUX", "code": "Sp311", "coeff_ue": 12}
+                    ]
+                },
+                {
+                    "pole" :"SCIENCES HUMAINES ET LANGUES 1",
+                    "matieres":[
+                        {"nom": "CONDUITE ET GESTION DE PROJET", "code": "Mi311", "coeff_ue": 39},
+                        {"nom": "SULITEST", "code": "Sh313", "coeff_ue": 4},
+                        {"nom": "GENERAL ENGINEERING ENGLISH 1", "code": "La311", "coeff_ue": 30},
+                        {"nom": "PRÉPARATION TOEIC - ADVANCED ENGLISH", "code": "La312", "coeff_ue": 27}
                     ]
                 }
             ]
         },
         "Semestre 2":{
-            "Systemes":[
+            "SIGNAUX ET SYSTÈMES AÉROSPATIAUX":[
                 {
-                    "pole" :"SCIENCES PHYSIQUES",
+                    "pole" :"CODE UE : PSIS31",
                     "matieres":[
-                        {"nom": "THERMODYNAMICS", "code": "AnPh321", "coeff_ue": 50},
-                        {"nom": "OPTICS", "code": "AnPh322", "coeff_ue": 50}
+                        {"nom": "SYSTÈMES D'EXPLOITATION DE BASE", "code": "In322", "coeff_ue": 22},
+                        {"nom": "PROGRAMMATION EN LANGAGE C++", "code": "In323", "coeff_ue": 32},
+                        {"nom": "PROGRAMMATION MICROCONTRÔLEURS", "code": "Au322", "coeff_ue": 21},
+                        {"nom": "IA EMBARQUÉE POUR L'AÉROSPATIAL", "code": "In324", "coeff_ue": 25}
+                    ]
+                },
+                {
+                    "pole" :"CODE UE : PSIS32",
+                    "matieres":[
+                        {"nom": "MODÉLISATION ET SIMULATION NUMÉRIQUE APPLICATION SYSTÈMES", "code": "Ma325", "coeff_ue": 36},
+                        {"nom": "REPRÉSENTATIONS D’ÉTAT DES SYSTÈMES LINÉAIRES", "code": "Au323", "coeff_ue": 18},
+                        {"nom": "TRAITEMENT NUMÉRIQUE DU SIGNAL APPLIQUÉ À L'AÉROSPATIAL", "code": "Té322", "coeff_ue": 28},
+                        {"nom": "ÉLECTROTECHNIQUE ET GÉNÉRATION ÉLECTRIQUE EMBARQUÉE À BORD D'UN AÉRONEF", "code": "El323", "coeff_ue": 18}
+                    ]
+                },
+                {
+                    "pole" :"CODE UE : PSIS33",
+                    "matieres":[
+                        {"nom": "ÉLECTRONIQUE NUMÉRIQUE", "code": "El321", "coeff_ue": 23},
+                        {"nom": "INITIATION À LA LOGIQUE PROGRAMMÉE SUR FPGA", "code": "El322", "coeff_ue": 27},
+                        {"nom": "SYSTÈMES DE TÉLÉCOMMUNICATIONS AÉRONAUTIQUES", "code": "Té321", "coeff_ue": 23},
+                        {"nom": "RÉSEAUX EMBARQUÉS POUR L'AÉRONAUTIQUE", "code": "In321", "coeff_ue": 27}
+                    ]
+                },
+                                {
+                    "pole" :"CONNAISSANCE DE L'ENTREPRISE ET INSERTION PROFESSIONNELLE 2",
+                    "matieres":[
+                        {"nom": "MODÉLISATION ET ANALYSE DYNAMIQUE DES AÉRONEFS", "code": "Sh322", "coeff_ue": 21},
+                        {"nom": "AÉRODYNAMIQUE 2", "code": "Sh323", "coeff_ue": 30},
+                        {"nom": "INITIATION À LA CFD", "code": "Mi321", "coeff_ue": 25},
+                        {"nom": "INTRODUCTION AU VOL VERTICAL", "code": "Mi322", "coeff_ue": 14},
+                        {"nom": "INTRODUCTION AU VOL VERTICAL", "code": "Mi323", "coeff_ue": 10}
+                    ]
+                },
+                {
+                    "pole" :"TRONC COMMUN : SCIENCES HUMAINES ET LANGUES 2",
+                    "matieres":[
+                        {"nom": "MODÉLISATION ET ANALYSE DYNAMIQUE DES AÉRONEFS", "code": "Sh322", "coeff_ue": 84},
+                        {"nom": "AÉRODYNAMIQUE 2", "code": "Sh323", "coeff_ue": 16}
+                    ]
+                },
+                {
+                    "pole" :"CONNAISSANCE DE L'ENTREPRISE ET INSERTION PROFESSIONNELLE",
+                    "matieres":[
+                        {"nom": "STAGE", "code": "St320", "coeff_ue": 100}
                     ]
                 }
             ],
-            "Vehicules":[
+            "VÉHICULES AÉROSPATIAUX":[
                 {
-                    "pole" :"SCIENCES PHYSIQUES",
+                    "pole" :"CODE UE : PSIV31",
                     "matieres":[
-                        {"nom": "THERMODYNAMICS", "code": "AnPh321", "coeff_ue": 50},
-                        {"nom": "OPTICS", "code": "AnPh322", "coeff_ue": 50}
+                        {"nom": "MÉCANIQUE GÉNÉRALE 2", "code": "Mé321", "coeff_ue": 19},
+                        {"nom": "MODÉLISATION ET SIMULATION NUMÉRIQUE. APPLICATION VÉHICULES", "code": "Ma327", "coeff_ue": 20},
+                        {"nom": "INTRODUCTION À LA MÉTHODE DES ÉLÉMENTS FINIS", "code": "Mé322", "coeff_ue": 11},
+                        {"nom": "CONCEPTION ASSISTÉE PAR ORDINATEUR 2 (CATIA)", "code": "Mé323", "coeff_ue": 13},
+                        {"nom": "ÉLASTICITÉ LINÉAIRE", "code": "Mé324", "coeff_ue": 24},
+                        {"nom": "SCIENCE DES MATÉRIAUX", "code": "Mé325", "coeff_ue": 13}
+                    ]
+                },
+                {
+                    "pole" :"CODE UE : PSIV32",
+                    "matieres":[
+                        {"nom": "INTRODUCTION AUX TURBOMACHINES", "code": "En321", "coeff_ue": 35},
+                        {"nom": "TRANSFERTS THERMIQUES 2", "code": "En322", "coeff_ue": 26},
+                        {"nom": "THERMODYNAMIQUE APPLIQUÉE", "code": "En323", "coeff_ue": 39}
+                    ]
+                },
+                {
+                    "pole" :"CODE UE : PSIV 33",
+                    "matieres":[
+                        {"nom": "MODÉLISATION ET ANALYSE DYNAMIQUE DES AÉRONEFS", "code": "Au324", "coeff_ue": 22},
+                        {"nom": "AÉRODYNAMIQUE 2", "code": "Mf321", "coeff_ue": 37},
+                        {"nom": "INITIATION À LA CFD", "code": "Mf322", "coeff_ue": 18},
+                        {"nom": "INTRODUCTION AU VOL VERTICAL", "code": "Aé323", "coeff_ue": 23}
+                    ]
+                },
+                {
+                    "pole" :"CONNAISSANCE DE L'ENTREPRISE ET INSERTION PROFESSIONNELLE 2",
+                    "matieres":[
+                        {"nom": "MODÉLISATION ET ANALYSE DYNAMIQUE DES AÉRONEFS", "code": "Sh322", "coeff_ue": 21},
+                        {"nom": "AÉRODYNAMIQUE 2", "code": "Sh323", "coeff_ue": 30},
+                        {"nom": "INITIATION À LA CFD", "code": "Mi321", "coeff_ue": 25},
+                        {"nom": "INTRODUCTION AU VOL VERTICAL", "code": "Mi322", "coeff_ue": 14},
+                        {"nom": "INTRODUCTION AU VOL VERTICAL", "code": "Mi323", "coeff_ue": 10}
+                    ]
+                },
+                {
+                    "pole" :"TRONC COMMUN : SCIENCES HUMAINES ET LANGUES 2",
+                    "matieres":[
+                        {"nom": "MODÉLISATION ET ANALYSE DYNAMIQUE DES AÉRONEFS", "code": "Sh322", "coeff_ue": 84},
+                        {"nom": "AÉRODYNAMIQUE 2", "code": "Sh323", "coeff_ue": 16}
+                    ]
+                },
+                {
+                    "pole" :"CONNAISSANCE DE L'ENTREPRISE ET INSERTION PROFESSIONNELLE",
+                    "matieres":[
+                        {"nom": "STAGE", "code": "St320", "coeff_ue": 100}
                     ]
                 }
             ]

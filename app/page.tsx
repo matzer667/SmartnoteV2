@@ -3,15 +3,27 @@
 import { useState, useMemo, useEffect } from 'react';
 import data from "@/data/matieres.json";
 import { calculerSaaS, UserGradesInput } from "@/lib/calculator";
-import { Plus, Trash2, GraduationCap, LayoutDashboard } from "lucide-react";
+import { Plus, Trash2, GraduationCap, LayoutDashboard, ArrowUp } from "lucide-react";
 
 export default function SmartNotePage() {
-  // 1. ÉTATS DE BASE
+  // --- 1. DÉFINITION DE L'ANIMATION CSS ---
+  const stylesAnimation = `
+    @keyframes slideInRightShort {
+      0% { opacity: 0; transform: translateX(50px); filter: blur(10px); }
+      100% { opacity: 1; transform: translateX(0); filter: blur(0); }
+    }
+    .animate-slide-right {
+      animation: slideInRightShort 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+  `;
+
+  // 2. ÉTATS
   const [annee, setAnnee] = useState(Object.keys(data)[0]);
   const [semestre, setSemestre] = useState("Semestre 1");
   const [notesInput, setNotesInput] = useState<UserGradesInput>({});
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  // 2. GESTION DYNAMIQUE DE LA FILIÈRE (SÉCURISÉE)
+  // 3. FILIÈRES
   const filieresDisponibles = useMemo(() => {
     const sData = (data as any)[annee]?.[semestre] || {};
     return Object.keys(sData);
@@ -19,7 +31,6 @@ export default function SmartNotePage() {
 
   const [filiere, setFiliere] = useState("");
 
-  // Synchronisation sécurisée de la filière
   useEffect(() => {
     if (filieresDisponibles.length > 0) {
       if (!filiere || !filieresDisponibles.includes(filiere)) {
@@ -30,7 +41,7 @@ export default function SmartNotePage() {
     }
   }, [filieresDisponibles, filiere]);
 
-  // 3. PERSISTANCE
+  // 4. PERSISTANCE
   useEffect(() => {
     const saved = localStorage.getItem('smartnote-data');
     if (saved) {
@@ -44,7 +55,13 @@ export default function SmartNotePage() {
     }
   }, [notesInput]);
 
-  // 4. CALCULS
+  // 5. SCROLL & CALCULS
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const resultats = useMemo(() => {
     if (!annee || !semestre || !filiere) return null;
     return calculerSaaS(annee, semestre, filiere, notesInput);
@@ -54,56 +71,89 @@ export default function SmartNotePage() {
     return (data as any)[annee]?.[semestre]?.[filiere] || [];
   }, [annee, semestre, filiere]);
 
-  // 5. ACTIONS
   const updateNote = (code: string, index: number, field: 'valeur' | 'coef', value: number) => {
     const newNotes = { ...notesInput };
     if (!newNotes[code]) newNotes[code] = [];
     if (newNotes[code][index]) {
-      // On s'assure que c'est bien un nombre, sinon 0 (pour éviter les crashs)
       newNotes[code][index][field] = isNaN(value) ? 0 : value;
       setNotesInput(newNotes);
     }
   };
 
-  const moyenneGeneraleNum = parseFloat(resultats?.moyenneGenerale || "0");
+  const moyenneGeneraleStr = resultats?.moyenneGenerale || "0.00";
+  const moyenneGeneraleNum = parseFloat(moyenneGeneraleStr);
 
   return (
     <div className="flex flex-col min-h-screen text-slate-200 pb-20 bg-[#020617]">
-      {/* HEADER */}
-      <header className="sticky top-0 z-30 flex items-center justify-between px-6 py-4 bg-[#0f172a]/95 backdrop-blur-md border-b border-slate-800">
-        <div className="flex items-center gap-2">
-          <div className="bg-[#facc15] p-1.5 rounded-lg shadow-lg">
-            <GraduationCap size={20} className="text-[#020617]" />
-          </div>
-          <span className="text-xl font-black tracking-tighter uppercase text-[#facc15]">SmartNote</span>
+      <style>{stylesAnimation}</style>
+
+      {/* HEADER ANIMÉ */}
+      <header className={`sticky top-0 z-40 w-full border-b transition-all duration-300 ${isScrolled ? 'bg-[#0f172a]/95 border-slate-800 shadow-xl py-2' : 'bg-transparent border-transparent py-4'}`}>
+        <div className="max-w-[1100px] mx-auto px-4 sm:px-6 flex items-center justify-between">
+            
+            {/* Logo */}
+            <div className="flex items-center gap-2 shrink-0">
+                <div className="bg-[#facc15] p-1.5 rounded-lg shadow-lg">
+                    <GraduationCap size={18} className="text-[#020617]" />
+                </div>
+                <span className={`text-lg sm:text-xl font-black tracking-tighter uppercase text-[#facc15] transition-opacity duration-300 ${isScrolled ? 'hidden sm:block' : 'block'}`}>
+                  SmartNote
+                </span>
+            </div>
+
+            {/* INFO MINIATURE */}
+            <div className={`flex items-center gap-3 sm:gap-4 transition-all duration-500 ease-out transform ${isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}>
+                
+                <div className="text-right">
+                    <p className="text-[7px] sm:text-[8px] uppercase font-black text-slate-500 leading-none mb-0.5">Moyenne</p>
+                    <p className="text-xs sm:text-sm font-black text-[#facc15] leading-none">
+                        {moyenneGeneraleStr}
+                        <span className="text-[8px] sm:text-[10px] text-slate-600 ml-0.5">/20</span>
+                    </p>
+                </div>
+
+                {/* Badge Statut (MODIFIÉ ICI : ROUGE SI EN ATTENTE) */}
+                <div className={`px-2 py-1 sm:px-3 rounded-full border text-[9px] sm:text-[10px] font-black uppercase tracking-widest whitespace-nowrap ${moyenneGeneraleNum >= 10 ? 'bg-blue-500/10 border-blue-500 text-blue-400' : 'bg-red-500/10 border-red-500 text-red-400'}`}>
+                    {moyenneGeneraleNum >= 10 ? 'Admis' : 'Attente'}
+                </div>
+            </div>
         </div>
       </header>
 
-      <main className="flex-1 max-w-[1100px] w-full mx-auto p-4 sm:p-8 space-y-8">
+      <main className="flex-1 max-w-[1100px] w-full mx-auto p-3 sm:p-8 space-y-6">
         
-        {/* SCORE BOARD & STATUS */}
-        <div className="p-8 glass-card rounded-[28px] border border-slate-700/50 bg-slate-900/40 relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-8 opacity-5"><LayoutDashboard size={120} /></div>
+        {/* GRANDE CARTE SCORE */}
+        <div className={`p-6 sm:p-8 glass-card rounded-[28px] border border-slate-700/50 bg-slate-900/40 relative overflow-hidden transition-all duration-500 ${isScrolled ? 'opacity-0 scale-95 pointer-events-none h-0 p-0 m-0 overflow-hidden' : 'opacity-100 scale-100'}`}>
+          <div className="absolute -top-6 -right-6 opacity-5 rotate-12"><LayoutDashboard size={150} /></div>
           
-          <div className="relative z-10 flex flex-col md:flex-row justify-between items-center gap-6">
-            {/* Partie Gauche : Moyenne */}
-            <div className="text-center md:text-left">
-              <h2 className="text-slate-500 uppercase text-[0.65rem] font-black tracking-[0.3em] mb-3">Moyenne Semestrielle</h2>
-              <div className="flex items-baseline gap-2 justify-center md:justify-start">
-                <span className="text-7xl font-black text-[#facc15] tracking-tighter drop-shadow-2xl">
-                    {resultats?.moyenneGenerale || "0.00"}
+          <div className="relative z-10 flex flex-col sm:flex-row justify-between items-center gap-6">
+            <div className="text-center sm:text-left">
+              <h2 className="text-slate-500 uppercase text-[0.65rem] font-black tracking-[0.3em] mb-2">Moyenne Semestrielle</h2>
+              <div className="flex items-baseline gap-2 justify-center sm:justify-start overflow-hidden">
+                <span 
+                    key={moyenneGeneraleStr} 
+                    className="text-6xl sm:text-7xl font-black text-[#facc15] tracking-tighter drop-shadow-2xl animate-slide-right inline-block"
+                >
+                    {moyenneGeneraleStr}
                 </span>
-                <span className="text-2xl text-slate-600 font-bold">/20</span>
+                <span className="text-xl sm:text-2xl text-slate-600 font-bold">/20</span>
               </div>
             </div>
 
-            {/* Partie Droite : Status Box (AJOUTÉ) */}
-            <div className="flex gap-4">
-                <div className="text-center bg-slate-900/60 p-4 rounded-2xl border border-slate-800 w-36 backdrop-blur-sm">
-                    <p className="text-[9px] text-slate-500 font-black mb-1 uppercase tracking-widest">Statut</p>
-                    <p className={`text-xl font-black uppercase tracking-tighter ${moyenneGeneraleNum >= 10 ? 'text-blue-400' : 'text-slate-500'}`}>
-                        {moyenneGeneraleNum >= 10 ? 'Admis' : 'En attente'}
-                    </p>
+            <div className="w-full sm:w-auto overflow-hidden rounded-2xl">
+                <div className="flex justify-center sm:block bg-slate-900/60 p-3 sm:p-4 border border-slate-800 w-full sm:w-36 backdrop-blur-sm">
+                   <div className="text-center">
+                      <p className="text-[9px] text-slate-500 font-black mb-1 uppercase tracking-widest">Statut</p>
+                      
+                      {/* STATUT (MODIFIÉ ICI : ROUGE SI EN ATTENTE) */}
+                      <p 
+                        key={moyenneGeneraleNum >= 10 ? 'admis' : 'attente'}
+                        className={`text-lg sm:text-xl font-black uppercase tracking-tighter animate-slide-right ${moyenneGeneraleNum >= 10 ? 'text-blue-400' : 'text-red-400'}`}
+                        style={{ animationDelay: '0.1s' }}
+                      >
+                          {moyenneGeneraleNum >= 10 ? 'Admis' : 'En attente'}
+                      </p>
+                   </div>
                 </div>
             </div>
           </div>
@@ -111,28 +161,31 @@ export default function SmartNotePage() {
 
         {/* NAVIGATION SELECTORS */}
         <div className="space-y-4">
-          <div className="glass-card p-2 rounded-2xl flex flex-wrap gap-2 bg-slate-900/30 border border-slate-800/60">
-            {Object.keys(data).map(a => (
-              <button key={a} onClick={() => setAnnee(a)} 
-                className={`px-5 py-2 rounded-xl text-xs font-black transition-all uppercase ${annee === a ? 'bg-[#facc15] text-[#020617]' : 'text-slate-500 hover:bg-slate-800'}`}>
-                {a}
-              </button>
-            ))}
-            <div className="w-[1px] bg-slate-800 mx-2 hidden md:block"></div>
-            {Object.keys((data as any)[annee] || {}).map(s => (
-              <button key={s} onClick={() => setSemestre(s)}
-                className={`px-5 py-2 rounded-xl text-xs font-black transition-all uppercase ${semestre === s ? 'bg-slate-700 text-white' : 'text-slate-600 hover:bg-slate-800'}`}>
-                {s}
-              </button>
-            ))}
+          <div className="glass-card p-1.5 sm:p-2 rounded-2xl flex flex-col sm:flex-row gap-2 bg-slate-900/30 border border-slate-800/60">
+            <div className="flex overflow-x-auto pb-1 sm:pb-0 gap-1 sm:gap-2 no-scrollbar">
+                {Object.keys(data).map(a => (
+                <button key={a} onClick={() => setAnnee(a)} 
+                    className={`flex-shrink-0 px-4 py-2 rounded-xl text-xs font-black transition-all uppercase whitespace-nowrap ${annee === a ? 'bg-[#facc15] text-[#020617]' : 'text-slate-500 hover:bg-slate-800'}`}>
+                    {a}
+                </button>
+                ))}
+            </div>
+            <div className="h-[1px] sm:h-auto sm:w-[1px] bg-slate-800 mx-1"></div>
+            <div className="flex gap-1 sm:gap-2">
+                {Object.keys((data as any)[annee] || {}).map(s => (
+                <button key={s} onClick={() => setSemestre(s)}
+                    className={`flex-1 sm:flex-none px-4 py-2 rounded-xl text-[10px] sm:text-xs font-black transition-all uppercase ${semestre === s ? 'bg-slate-700 text-white' : 'text-slate-600 hover:bg-slate-800'}`}>
+                    {s}
+                </button>
+                ))}
+            </div>
           </div>
-
           {filieresDisponibles.length > 0 && (
-            <div className="flex flex-wrap gap-3 items-center px-2">
-              <span className="text-[10px] font-black text-slate-600 uppercase tracking-widest">Filière :</span>
+            <div className="flex flex-wrap gap-2 items-center px-1">
+              <span className="text-[9px] font-black text-slate-600 uppercase tracking-widest hidden sm:inline">Filière :</span>
               {filieresDisponibles.map(f => (
                 <button key={f} onClick={() => setFiliere(f)}
-                  className={`px-4 py-1.5 rounded-full text-[10px] font-bold border transition-all ${filiere === f ? 'bg-blue-500/10 border-blue-500 text-blue-400' : 'border-slate-800 text-slate-500'}`}>
+                  className={`px-3 py-1.5 rounded-full text-[9px] font-bold border transition-all ${filiere === f ? 'bg-blue-500/10 border-blue-500 text-blue-400' : 'border-slate-800 text-slate-500'}`}>
                   {f}
                 </button>
               ))}
@@ -141,91 +194,87 @@ export default function SmartNotePage() {
         </div>
 
         {/* LISTE DES PÔLES */}
-        <div className="space-y-10">
+        <div className="space-y-8">
           {poles.map((pole: any, pIdx: number) => (
-            <section key={pIdx} className="glass-card rounded-[26px] border border-slate-800/80 bg-[#0f172a]/40 overflow-hidden shadow-2xl">
-              <div className="px-8 py-4 bg-slate-800/20 border-b border-slate-800 flex justify-between items-center">
-                <h3 className="font-black text-[10px] uppercase tracking-widest text-slate-400">{pole.pole}</h3>
-                <span className={`text-lg font-black ${parseFloat(resultats?.details[pIdx]?.moyennePole || "0") >= 10 ? 'text-green-400' : 'text-red-400'}`}>
+            <section key={pIdx} className="glass-card rounded-[24px] border border-slate-800/80 bg-[#0f172a]/40 overflow-hidden shadow-xl">
+              <div className="px-5 py-3 sm:px-8 sm:py-4 bg-slate-800/40 border-b border-slate-800 flex justify-between items-center">
+                <h3 className="font-black text-[9px] sm:text-[10px] uppercase tracking-widest text-slate-400 truncate max-w-[70%]">{pole.pole}</h3>
+                <span className={`text-base sm:text-lg font-black ${parseFloat(resultats?.details[pIdx]?.moyennePole || "0") >= 10 ? 'text-green-400' : 'text-red-400'}`}>
                     {resultats?.details[pIdx]?.moyennePole || "0.00"}
                 </span>
               </div>
-              
-              <div className="overflow-x-auto">
-                <table className="w-full text-left">
-                  <tbody className="divide-y divide-slate-800/40">
-                    {pole.matieres.map((matiere: any) => {
-                      const detailM = resultats?.details[pIdx]?.matieres.find((m:any) => m.nom === matiere.nom);
-                      const noteMoy = parseFloat(detailM?.moyenne || "0");
-                      
-                      return (
-                        <tr key={matiere.code} className="hover:bg-slate-800/5 transition-colors">
-                          <td className="px-6 py-6 min-w-[200px]">
-                            <div className="flex items-center gap-3">
-                              <div className={`w-2 h-2 rounded-full ${detailM?.moyenne === "N/A" ? 'bg-slate-700' : noteMoy >= 10 ? 'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.5)]' : 'bg-red-500'}`} />
-                              <div>
-                                <p className="text-sm font-black text-slate-100 uppercase">{matiere.nom}</p>
-                                <p className="text-[9px] text-slate-500 font-bold mt-1">ID: {matiere.code} • COEFF: {matiere.coeff_ue}</p>
-                              </div>
+              <div className="divide-y divide-slate-800/40">
+                {pole.matieres.map((matiere: any) => {
+                  const detailM = resultats?.details[pIdx]?.matieres.find((m:any) => m.nom === matiere.nom);
+                  const noteMoy = parseFloat(detailM?.moyenne || "0");
+                  return (
+                    <div key={matiere.code} className="p-4 sm:px-6 sm:py-5 hover:bg-slate-800/5 transition-colors group">
+                      <div className="flex justify-between items-start mb-4 sm:mb-0 sm:items-center">
+                        <div className="flex items-start gap-3 flex-1">
+                            <div className={`mt-1.5 w-2 h-2 rounded-full shrink-0 ${detailM?.moyenne === "N/A" ? 'bg-slate-700' : noteMoy >= 10 ? 'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.5)]' : 'bg-red-500'}`} />
+                            <div className="flex flex-col sm:flex-row sm:items-center sm:gap-6 w-full">
+                                <div>
+                                    <p className="text-xs sm:text-sm font-black text-slate-100 uppercase leading-tight">{matiere.nom}</p>
+                                    <p className="text-[9px] text-slate-500 font-bold mt-1">ID: {matiere.code} • COEFF: {matiere.coeff_ue}</p>
+                                </div>
+                                <div className="mt-2 sm:hidden flex items-center gap-2">
+                                     <span className="text-[9px] text-slate-600 font-black uppercase">Moyenne:</span>
+                                     <span className={`text-xs font-black ${detailM?.moyenne !== "N/A" ? 'text-[#facc15]' : 'text-slate-600'}`}>
+                                        {detailM?.moyenne || "N/A"}
+                                     </span>
+                                </div>
                             </div>
-                          </td>
-                          <td className="px-6 py-6 text-center">
-                            <div className="flex flex-col items-center">
-                              <span className="text-[8px] text-slate-600 font-black uppercase mb-1">Moyenne</span>
-                              <span className={`text-sm font-black p-2 rounded-lg ${detailM?.moyenne !== "N/A" ? 'bg-slate-900 text-[#facc15] border border-slate-800 shadow-md' : 'text-slate-800 italic'}`}>
+                        </div>
+                        <div className="hidden sm:block text-center px-4">
+                            <span className={`block text-sm font-black px-3 py-1.5 rounded-lg ${detailM?.moyenne !== "N/A" ? 'bg-slate-900 text-[#facc15] border border-slate-800' : 'text-slate-700 italic'}`}>
                                 {detailM?.moyenne || "N/A"}
-                              </span>
-                            </div>
-                          </td>
-                          <td className="px-6 py-6 text-right">
-                            <div className="flex flex-wrap justify-end gap-3">
-                              {(notesInput[matiere.code] || []).map((n, i) => (
-                                <div key={i} className="group/item relative flex items-center gap-3 bg-[#020617] border border-slate-700/60 p-2 rounded-2xl shadow-xl hover:border-[#facc15]/40 transition-all">
-                                  
-                                  {/* INPUT NOTE (RESTITUÉ) */}
-                                  <div className="flex flex-col items-center px-1">
-                                    <span className="text-[8px] text-slate-500 font-black uppercase mb-1">Note</span>
-                                    <input type="number" step="0.5" className="w-10 bg-transparent text-center text-sm font-black text-[#facc15] outline-none"
-                                      value={n.valeur || ""} onChange={(e) => updateNote(matiere.code, i, 'valeur', parseFloat(e.target.value))} />
-                                  </div>
-
-                                  <div className="h-6 w-[1px] bg-slate-800"></div>
-
-                                  {/* INPUT COEF (RESTITUÉ) */}
-                                  <div className="flex flex-col items-center px-1">
-                                    <span className="text-[8px] text-slate-500 font-black uppercase mb-1">Coef</span>
-                                    <input type="number" step="0.25" className="w-8 bg-transparent text-center text-[10px] text-slate-400 font-bold outline-none"
-                                      value={n.coef || ""} onChange={(e) => updateNote(matiere.code, i, 'coef', parseFloat(e.target.value))} />
-                                  </div>
-
-                                  {/* BOUTON SUPPRIMER */}
-                                  <button onClick={() => {
+                            </span>
+                        </div>
+                      </div>
+                      <div className="mt-2 sm:mt-4 flex flex-wrap sm:justify-end gap-2 sm:gap-3 items-center">
+                          {(notesInput[matiere.code] || []).map((n, i) => (
+                            <div key={i} className="group/item flex items-center bg-[#020617] border border-slate-700/60 p-1.5 rounded-xl shadow-lg hover:border-[#facc15]/30 transition-all">
+                                <div className="flex flex-col items-center px-1">
+                                    <span className="text-[7px] text-slate-600 font-black uppercase mb-0.5">Note</span>
+                                    <input type="number" inputMode="decimal" step="any" className="w-8 sm:w-10 bg-transparent text-center text-xs sm:text-sm font-black text-[#facc15] outline-none p-0"
+                                    value={n.valeur || ""} onChange={(e) => updateNote(matiere.code, i, 'valeur', parseFloat(e.target.value))} />
+                                </div>
+                                <div className="h-5 w-[1px] bg-slate-800 mx-1"></div>
+                                <div className="flex flex-col items-center px-1">
+                                    <span className="text-[7px] text-slate-600 font-black uppercase mb-0.5">Coef</span>
+                                    <input type="number" inputMode="decimal" step="any" className="w-6 sm:w-8 bg-transparent text-center text-[9px] sm:text-[10px] text-slate-400 font-bold outline-none p-0"
+                                    value={n.coef || ""} onChange={(e) => updateNote(matiere.code, i, 'coef', parseFloat(e.target.value))} />
+                                </div>
+                                <button onClick={() => {
                                     const next = {...notesInput};
                                     next[matiere.code].splice(i, 1);
                                     setNotesInput({...next});
-                                  }} className="text-slate-700 hover:text-red-500 ml-1 px-1"><Trash2 size={14}/></button>
-                                </div>
-                              ))}
-
-                              {/* BOUTON AJOUTER */}
-                              <button onClick={() => {
-                                const curr = notesInput[matiere.code] || [];
-                                setNotesInput({...notesInput, [matiere.code]: [...curr, {valeur: 0, coef: 1}]});
-                              }} className="w-12 h-12 rounded-2xl border-2 border-dashed border-slate-800 text-slate-700 hover:border-[#facc15] hover:text-[#facc15] flex items-center justify-center transition-all">
-                                <Plus size={20} />
-                              </button>
+                                }} className="text-slate-700 hover:text-red-500 flex justify-center items-center w-6 sm:w-0 sm:group-hover/item:w-6 overflow-hidden transition-all duration-200">
+                                    <Trash2 size={14}/>
+                                </button>
                             </div>
-                          </td>
-                        </tr>
-                      )
-                    })}
-                  </tbody>
-                </table>
+                          ))}
+                          <button onClick={() => {
+                            const curr = notesInput[matiere.code] || [];
+                            setNotesInput({...notesInput, [matiere.code]: [...curr, {valeur: 0, coef: 1}]});
+                          }} className="w-10 h-10 rounded-xl border border-dashed border-slate-700 text-slate-600 hover:border-[#facc15] hover:text-[#facc15] flex items-center justify-center transition-all bg-slate-900/20 active:scale-95">
+                            <Plus size={18} />
+                          </button>
+                      </div>
+                    </div>
+                  )
+                })}
               </div>
             </section>
           ))}
         </div>
       </main>
+      
+      <button 
+        onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
+        className={`fixed bottom-6 right-6 p-3 bg-[#facc15] text-[#020617] rounded-full shadow-lg shadow-[#facc15]/20 transition-all duration-500 z-50 ${isScrolled ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
+        <ArrowUp size={24} strokeWidth={3} />
+      </button>
     </div>
   );
 }

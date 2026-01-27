@@ -13,16 +13,19 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://smartnote.fr"), 
+
   title: "SmartNote",
   description: "Calcule ta moyenne en un clic. Développé par Roméo & Mathis.",
+  
   openGraph: {
     title: "SmartNote - Calculateur de Moyenne",
     description: "L'outil indispensable pour les étudiants.",
-    url: "https://smartnote.fr", 
+    url: "/", 
     siteName: "SmartNote",
     images: [
       {
-        url: "/smartnote_favicon.svg", // Image à mettre dans le dossier public/
+        url: "/smartnote_preview.png", 
         width: 1200,
         height: 630,
         alt: "Aperçu de SmartNote",
