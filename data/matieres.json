@@ -1,7 +1,7 @@
 {
   "AERO 1": {
     "Semestre 1": {
-      "Aéronautique": [
+      "Prépa Intégrée": [
         {
           "pole": "SCIENCES FONDAMENTALES",
           "matieres": [
@@ -21,7 +21,7 @@
       ]
     },
     "Semestre 2": {
-      "Aéronautique": [
+      "Prépa Intégrée": [
         {
           "pole": "SCIENCES PHYSIQUES",
           "matieres": [
@@ -34,14 +34,90 @@
   },
   "AERO 2": {
     "Semestre 1": {
-      "Aéronautique": [
+      "Prépa Intégrée": [
         {
-          "pole": "MÉCANIQUE DES FLUIDES",
+          "pole": "SCIENCES FONDAMENTALES",
           "matieres": [
-            { "nom": "FLUID STATICS", "code": "AnFl211", "coeff_ue": 100 }
+            { "nom": "Analyse : calcul différentiel", "code": "Ma211", "coeff_ue": 55 },
+            { "nom": "Analyse : intégrales multiples et curvilignes", "code": "Ma212", "coeff_ue": 45 }
+          ]
+        },
+        {
+          "pole":"SCIENCES DE L'INGÉNIEUR : UE PSI 21",
+          "matieres": [
+            { "nom": "Thermodynamique 1", "code": "Phv211", "coeff_ue": 28 },
+            { "nom": "Résistance des matériaux 1", "code": "Mé213", "coeff_ue": 31 },
+            { "nom": "Mécanique du solide 1", "code": "Mé212", "coeff_ue": 28 },
+            { "nom": "Conception mécanique assistée par ordinateur 1", "code": "Mé211", "coeff_ue": 13 }
+          ]
+        },
+        {
+          "pole":"SCIENCES DE L'INGÉNIEUR : UE PSI 22",
+          "matieres": [
+            { "nom": "Electromagnétisme 1", "code": "Phs213", "coeff_ue": 28 },
+            { "nom": "Physique des ondes 1 : ondes mécaniques, acoustiques", "code": "Phv212", "coeff_ue": 30 },
+            { "nom": "Electronique 1", "code": "El211", "coeff_ue": 24 },
+            { "nom": "Pratique de la programmation en Python 1", "code": "In211", "coeff_ue": 18 }
+          ]
+        },
+        {
+          "pole":"AERONAUTIQUE ET SPATIAL",
+          "matieres": [
+            { "nom": "Aéronautique 1", "code": "Aé211", "coeff_ue": 28 },
+            { "nom": "Grand projet programmation", "code": "Gp211", "coeff_ue": 27 },
+            { "nom": "Projet ROVER", "code": "Gp212", "coeff_ue": 45 }
+          ]
+        },
+        {
+          "pole":"SCIENCES HUMAINES ET LANGUES",
+          "matieres": [
+            { "nom": "Ethique de l'ingénieur aérospatial", "code": "Sh211", "coeff_ue": 30 },
+            { "nom": "English for aircraft engines", "code": "La211", "coeff_ue": 41 },
+            { "nom": "Anglais : préparation TOEIC / Advanced english", "code": "La212", "coeff_ue": 29 }
           ]
         }
       ]
     }
-  }
+  },
+    "AERO 3": {
+        "Semestre 1":{
+            "Général":[
+                {
+                    "pole" :"SCIENCES FONDAMENTALES 1",
+                    "matieres":[
+                        {"nom": "Analyse harmonique pour l'ingénieur", "code": "Ma312", "coeff_ue": 33},
+                        {"nom": "Optimisation convexe", "code": "Ma316", "coeff_ue": 34},
+                        {"nom": "Introduction aux Sciences des données", "code": "Ma315", "coeff_ue": 33}
+                    ]
+                },
+                {
+                    "pole" :"SCIENCES FONDAMENTALES 2",
+                    "matieres":[
+                        {"nom": "Mécanique des fluides 1", "code": "Phv311", "coeff_ue": 50},
+                        {"nom": "Thermodynamique statistique", "code": "Phv312", "coeff_ue": 50}
+                    ]
+                }
+            ]
+        },
+        "Semestre 2":{
+            "Systemes":[
+                {
+                    "pole" :"SCIENCES PHYSIQUES",
+                    "matieres":[
+                        {"nom": "THERMODYNAMICS", "code": "AnPh321", "coeff_ue": 50},
+                        {"nom": "OPTICS", "code": "AnPh322", "coeff_ue": 50}
+                    ]
+                }
+            ],
+            "Vehicules":[
+                {
+                    "pole" :"SCIENCES PHYSIQUES",
+                    "matieres":[
+                        {"nom": "THERMODYNAMICS", "code": "AnPh321", "coeff_ue": 50},
+                        {"nom": "OPTICS", "code": "AnPh322", "coeff_ue": 50}
+                    ]
+                }
+            ]
+        }    
+    }
 }
