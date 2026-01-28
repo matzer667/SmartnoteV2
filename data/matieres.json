@@ -1,32 +1,83 @@
 {
   "AERO 1": {
     "Semestre 1": {
-      "Prépa Intégrée": [
+      "PRÉPA INTÉGRÉE": [
         {
           "pole": "SCIENCES FONDAMENTALES",
           "matieres": [
-            { "nom": "ALGEBRE", "code": "AnMa111", "coeff_ue": 40 },
-            { "nom": "ANALYSIS", "code": "AnMa112", "coeff_ue": 40 },
-            { "nom": "SCIENCE AND METHODOLOGY IMMERSION", "code": "AnMa110p", "coeff_ue": 20 }
+            { "nom": "ALGÈBRE", "code": "Ma111", "coeff_ue": 40 },
+            { "nom": "ANALYSE", "code": "Ma112", "coeff_ue": 40 },
+            { "nom": "IMMERSION SCIENCES ET MÉTHODOLOGIE", "code": "Ma110p", "coeff_ue": 20 }
           ]
         },
         {
-          "pole": "SCIENCES DE L'INGÉNIEUR",
+          "pole": "SCIENCES DE L'INGÉNIEUR 1",
           "matieres": [
-            { "nom": "POINT MECHANICS 1", "code": "AnPh111", "coeff_ue": 40 },
-            { "nom": "ELECTROKINETICS 1", "code": "AnEl111", "coeff_ue": 31 },
-            { "nom": "INTRODUCTION TO NUMERICAL SYSTEMS", "code": "AnEl112", "coeff_ue": 29 }
+            { "nom": "MÉCANIQUE DU POINT", "code": "Phv111", "coeff_ue": 49 },
+            { "nom": "ELECTROCINÉTIQUE 1", "code": "El111", "coeff_ue": 31 },
+            { "nom": "ALGORITHMIQUE ET LANGAGE PYTHON 1", "code": "In111", "coeff_ue": 20 }
+          ]
+        },
+        {
+          "pole": "AÉRONAUTIQUE ET SPATIAL 1",
+          "matieres": [
+            { "nom": "INTRODUCTION AU MONDE AÉRO ET FRESQUE DU CLIMAT", "code": "Aé111", "coeff_ue": 41 },
+            { "nom": "PROJETS AÉROSPATIAUX", "code": "Gp111", "coeff_ue": 34 }
+          ]
+        },
+        {
+          "pole": "SCIENCES HUMAINES ET LANGUES 1",
+          "matieres": [
+            { "nom": "HISTOIRE DES SCIENCES AÉROSPATIALES", "code": "Sh111", "coeff_ue": 34 },
+            { "nom": "PROJET IMPACT", "code": "Sh113", "coeff_ue": 19 },
+            { "nom": "PROJET VOLTAIRE", "code": "Sh112", "coeff_ue": 0 },
+            { "nom": "ANGLAIS : IMMERSION AÉRONAUTIQUE", "code": "La111", "coeff_ue": 47 }
           ]
         }
       ]
     },
     "Semestre 2": {
-      "Prépa Intégrée": [
+      "PRÉPA INTÉGRÉE": [
         {
-          "pole": "SCIENCES PHYSIQUES",
+          "pole": "SCIENCES FONDAMENTALES 2",
           "matieres": [
-            { "nom": "THERMODYNAMICS", "code": "AnPh121", "coeff_ue": 50 },
-            { "nom": "OPTICS", "code": "AnPh122", "coeff_ue": 50 }
+            { "nom": "ANALYSE ET PROBABILITÉS", "code": "Ma121", "coeff_ue": 54 },
+            { "nom": "ALGÈBRE ET GÉOMÉTRIE", "code": "Ma122", "coeff_ue": 46 }
+          ]
+        },
+        {
+          "pole": "SCIENCES DE L'INGÉNIEUR 2",
+          "matieres": [
+            { "nom": "MÉCANIQUE DU POINT 2", "code": "Phv121", "coeff_ue": 37 },
+            { "nom": "PHYSIQUE EXPÉRIMENTALE ET OPTIQUE", "code": "Phv122", "coeff_ue": 8 },
+            { "nom": "ELECTROCINÉTIQUE 2", "code": "El121", "coeff_ue": 25 },
+            { "nom": "ALGORITHMIQUE ET PYTHON 2", "code": "In121", "coeff_ue": 14 },
+            { "nom": "INTRODUCTION À LA CONCEPTION MÉCANIQUE", "code": "Mé121", "coeff_ue": 16 }
+          ]
+        },
+        {
+          "pole": "AÉRONAUTIQUE ET SPATIAL 2",
+          "matieres": [
+            { "nom": "DÉCOUVERTE MÉTIERS ET CONFÉRENCES", "code": "Aé121", "coeff_ue": 67 },
+            { "nom": "PROJETS AÉROSPATIAUX 2", "code": "Gp122", "coeff_ue": 33 }
+          ]
+        },
+        {
+          "pole": "SCIENCES HUMAINES ET LANGUES 2",
+          "matieres": [
+            { "nom": "HISTOIRE AÉRO ET TECHNOLOGIE", "code": "Sh121", "coeff_ue": 28 },
+            { "nom": "PROJET IMPACT 2", "code": "Sh123", "coeff_ue": 24 },
+            { "nom": "PROJET VOLTAIRE", "code": "Sh122", "coeff_ue": 11 },
+            { "nom": "ANGLAIS AÉRONAUTIQUE 2", "code": "La121", "coeff_ue": 26 },
+            { "nom": "PRÉPARATION TOEIC / ADVANCED ENGLISH", "code": "La124", "coeff_ue": 13 },
+            { "nom": "TOEIC", "code": "La123", "coeff_ue": 1 },
+            { "nom": "ENGAGEMENT PERSONNEL", "code": "Sh120", "coeff_ue": 50 }
+          ]
+        },
+        {
+          "pole": "CONNAISSANCE DE L'ENTREPRISE ET INSERTION PRO",
+          "matieres": [
+            { "nom": "STAGE / PROJET PROFESSIONNEL", "code": "St120", "coeff_ue": 100 }
           ]
         }
       ]
@@ -288,5 +339,324 @@
                 }
             ]
         }    
+    },
+    "AERO 4": {
+        "Semestre 1":{
+            "International":[ ]
+        },
+        "Semestre 2": {
+      "MAJEURE SET (SYSTÈMES EMBARQUÉS ET TÉLÉCOMS)": [
+        {
+          "pole": "TRONC COMMUN : SCIENCES HUMAINES ET LANGUES",
+          "matieres": [
+            { "nom": "ETHIQUE ENVIRONNEMENTALE", "code": "Sh421", "coeff_ue": 41 },
+            { "nom": "SOCIOLOGIE DES ENTREPRISES ET DES ORGANISATIONS", "code": "Sh422", "coeff_ue": 30 },
+            { "nom": "DROIT DES ACTIVITÉS AÉROSPATIALES", "code": "Sh424", "coeff_ue": 29 },
+            { "nom": "PRÉPARATION RENFORCÉE TOEIC", "code": "La421", "coeff_ue": 0 }
+          ]
+        },
+        {
+          "pole": "TRONC COMMUN : CONNAISSANCE DE L'ENTREPRISE",
+          "matieres": [
+            { "nom": "QUALITÉ - RÉGLEMENTATION - NORMES - LEAN", "code": "Mi421", "coeff_ue": 25 },
+            { "nom": "PRINCIPES DE STRATÉGIE D'ENTREPRISE", "code": "Mi422", "coeff_ue": 24 },
+            { "nom": "GESTION D'ENTREPRISE ET ANALYSE FINANCIÈRE", "code": "Mi423", "coeff_ue": 51 },
+            { "nom": "EVALUATION INDUSTRIEL (STAGE)", "code": "St421", "coeff_ue": 50 },
+            { "nom": "RAPPORT DE STAGE", "code": "St422", "coeff_ue": 50 }
+          ]
+        },
+        {
+          "pole": "TRONC COMMUN : SCIENCES DE L'INGÉNIEUR",
+          "matieres": [
+            { "nom": "REPRÉSENTATION GRAPHIQUE DES SYSTÈMES MULTIPHYSIQUES", "code": "Au421", "coeff_ue": 35 },
+            { "nom": "PRINCIPES DE BASE DE CONCEPTION AVION ET ÉCO-CONCEPTION", "code": "Mi426", "coeff_ue": 20 },
+            { "nom": "MÉCANIQUE DU VOL : QUALITÉS DE VOL", "code": "Aé421", "coeff_ue": 45 },
+            { "nom": "MODULE ÉLECTIF 1", "code": "Mo421a", "coeff_ue": 33 },
+            { "nom": "MODULE ÉLECTIF 2", "code": "Mo422a", "coeff_ue": 33 },
+            { "nom": "INITIATION À LA RECHERCHE ET À L'INNOVATION", "code": "Ci421a", "coeff_ue": 34 }
+          ]
+        },
+        {
+          "pole": "FILIÈRE SYSTÈMES",
+          "matieres": [
+            { "nom": "MODÉLISATION DES SYSTÈMES D'INFORMATION COMPLEXES", "code": "In421", "coeff_ue": 11 },
+            { "nom": "SYSTÈMES D'INFORMATION TEMPS RÉEL", "code": "In422", "coeff_ue": 23 },
+            { "nom": "SYSTÈMES INTELLIGENTS DISTRIBUÉS", "code": "In424", "coeff_ue": 24 },
+            { "nom": "INTRODUCTION TO MACHINE LEARNING", "code": "Ma422", "coeff_ue": 21 },
+            { "nom": "APPROCHE PHYSIQUE DES SYSTÈMES AUTOMATIQUES AÉRO", "code": "Au425", "coeff_ue": 21 }
+          ]
+        },
+        {
+          "pole": "SPÉCIALITÉ : SET",
+          "matieres": [
+            { "nom": "APPLICATIONS AVANCÉES DES CIRCUITS FPGA", "code": "El421", "coeff_ue": 23 },
+            { "nom": "SIGNAL DSP", "code": "Té423", "coeff_ue": 29 },
+            { "nom": "TÉLÉCOMMUNICATIONS : PRINCIPES ET BILANS DE LIAISONS", "code": "Té421", "coeff_ue": 26 },
+            { "nom": "PROPAGATION GUIDÉE ET HYPERFRÉQUENCES", "code": "Té422", "coeff_ue": 22 }
+          ]
+        }
+      ],
+      "MAJEURE SAA (SYSTÈMES AÉRONAUTIQUES AUTONOMES)": [
+        {
+          "pole": "TRONC COMMUN : SCIENCES HUMAINES ET LANGUES",
+          "matieres": [
+            { "nom": "ETHIQUE ENVIRONNEMENTALE", "code": "Sh421", "coeff_ue": 41 },
+            { "nom": "SOCIOLOGIE DES ENTREPRISES ET DES ORGANISATIONS", "code": "Sh422", "coeff_ue": 30 },
+            { "nom": "DROIT DES ACTIVITÉS AÉROSPATIALES", "code": "Sh424", "coeff_ue": 29 },
+            { "nom": "PRÉPARATION RENFORCÉE TOEIC", "code": "La421", "coeff_ue": 0 }
+          ]
+        },
+        {
+          "pole": "TRONC COMMUN : CONNAISSANCE DE L'ENTREPRISE",
+          "matieres": [
+            { "nom": "QUALITÉ - RÉGLEMENTATION - NORMES - LEAN", "code": "Mi421", "coeff_ue": 25 },
+            { "nom": "PRINCIPES DE STRATÉGIE D'ENTREPRISE", "code": "Mi422", "coeff_ue": 24 },
+            { "nom": "GESTION D'ENTREPRISE ET ANALYSE FINANCIÈRE", "code": "Mi423", "coeff_ue": 51 },
+            { "nom": "EVALUATION INDUSTRIEL (STAGE)", "code": "St421", "coeff_ue": 50 },
+            { "nom": "RAPPORT DE STAGE", "code": "St422", "coeff_ue": 50 }
+          ]
+        },
+        {
+          "pole": "TRONC COMMUN : SCIENCES DE L'INGÉNIEUR",
+          "matieres": [
+            { "nom": "REPRÉSENTATION GRAPHIQUE DES SYSTÈMES MULTIPHYSIQUES", "code": "Au421", "coeff_ue": 35 },
+            { "nom": "PRINCIPES DE BASE DE CONCEPTION AVION ET ÉCO-CONCEPTION", "code": "Mi426", "coeff_ue": 20 },
+            { "nom": "MÉCANIQUE DU VOL : QUALITÉS DE VOL", "code": "Aé421", "coeff_ue": 45 },
+            { "nom": "MODULE ÉLECTIF 1", "code": "Mo421a", "coeff_ue": 33 },
+            { "nom": "MODULE ÉLECTIF 2", "code": "Mo422a", "coeff_ue": 33 },
+            { "nom": "INITIATION À LA RECHERCHE ET À L'INNOVATION", "code": "Ci421a", "coeff_ue": 34 }
+          ]
+        },
+        {
+          "pole": "FILIÈRE SYSTÈMES",
+          "matieres": [
+            { "nom": "MODÉLISATION DES SYSTÈMES D'INFORMATION COMPLEXES", "code": "In421", "coeff_ue": 11 },
+            { "nom": "SYSTÈMES D'INFORMATION TEMPS RÉEL", "code": "In422", "coeff_ue": 23 },
+            { "nom": "SYSTÈMES INTELLIGENTS DISTRIBUÉS", "code": "In424", "coeff_ue": 24 },
+            { "nom": "INTRODUCTION TO MACHINE LEARNING", "code": "Ma422", "coeff_ue": 21 },
+            { "nom": "APPROCHE PHYSIQUE DES SYSTÈMES AUTOMATIQUES AÉRO", "code": "Au425", "coeff_ue": 21 }
+          ]
+        },
+        {
+          "pole": "SPÉCIALITÉ : SAA",
+          "matieres": [
+            { "nom": "ÉLECTRONIQUE DE PUISSANCE ET ACTIONNEURS AÉRO", "code": "Au424", "coeff_ue": 21 },
+            { "nom": "PRINCIPES DE GUIDAGE DES SYSTÈMES AUTONOMES", "code": "In425", "coeff_ue": 28 },
+            { "nom": "INTRODUCTION À LA ROBOTIQUE", "code": "In426", "coeff_ue": 23 },
+            { "nom": "RÉSEAUX EMBARQUÉS", "code": "In423", "coeff_ue": 28 }
+          ]
+        }
+      ],
+      "MAJEURE SA (SYSTÈMES AÉROSPATIAUX)": [
+        {
+          "pole": "TRONC COMMUN : SCIENCES HUMAINES ET LANGUES",
+          "matieres": [
+            { "nom": "ETHIQUE ENVIRONNEMENTALE", "code": "Sh421", "coeff_ue": 41 },
+            { "nom": "SOCIOLOGIE DES ENTREPRISES ET DES ORGANISATIONS", "code": "Sh422", "coeff_ue": 30 },
+            { "nom": "DROIT DES ACTIVITÉS AÉROSPATIALES", "code": "Sh424", "coeff_ue": 29 },
+            { "nom": "PRÉPARATION RENFORCÉE TOEIC", "code": "La421", "coeff_ue": 0 }
+          ]
+        },
+        {
+          "pole": "TRONC COMMUN : CONNAISSANCE DE L'ENTREPRISE",
+          "matieres": [
+            { "nom": "QUALITÉ - RÉGLEMENTATION - NORMES - LEAN", "code": "Mi421", "coeff_ue": 25 },
+            { "nom": "PRINCIPES DE STRATÉGIE D'ENTREPRISE", "code": "Mi422", "coeff_ue": 24 },
+            { "nom": "GESTION D'ENTREPRISE ET ANALYSE FINANCIÈRE", "code": "Mi423", "coeff_ue": 51 },
+            { "nom": "EVALUATION INDUSTRIEL (STAGE)", "code": "St421", "coeff_ue": 50 },
+            { "nom": "RAPPORT DE STAGE", "code": "St422", "coeff_ue": 50 }
+          ]
+        },
+        {
+          "pole": "TRONC COMMUN : SCIENCES DE L'INGÉNIEUR",
+          "matieres": [
+            { "nom": "REPRÉSENTATION GRAPHIQUE DES SYSTÈMES MULTIPHYSIQUES", "code": "Au421", "coeff_ue": 35 },
+            { "nom": "PRINCIPES DE BASE DE CONCEPTION AVION ET ÉCO-CONCEPTION", "code": "Mi426", "coeff_ue": 20 },
+            { "nom": "MÉCANIQUE DU VOL : QUALITÉS DE VOL", "code": "Aé421", "coeff_ue": 45 },
+            { "nom": "MODULE ÉLECTIF 1", "code": "Mo421a", "coeff_ue": 33 },
+            { "nom": "MODULE ÉLECTIF 2", "code": "Mo422a", "coeff_ue": 33 },
+            { "nom": "INITIATION À LA RECHERCHE ET À L'INNOVATION", "code": "Ci421a", "coeff_ue": 34 }
+          ]
+        },
+        {
+          "pole": "FILIÈRE SYSTÈMES",
+          "matieres": [
+            { "nom": "MODÉLISATION DES SYSTÈMES D'INFORMATION COMPLEXES", "code": "In421", "coeff_ue": 11 },
+            { "nom": "SYSTÈMES D'INFORMATION TEMPS RÉEL", "code": "In422", "coeff_ue": 23 },
+            { "nom": "SYSTÈMES INTELLIGENTS DISTRIBUÉS", "code": "In424", "coeff_ue": 24 },
+            { "nom": "INTRODUCTION TO MACHINE LEARNING", "code": "Ma422", "coeff_ue": 21 },
+            { "nom": "APPROCHE PHYSIQUE DES SYSTÈMES AUTOMATIQUES AÉRO", "code": "Au425", "coeff_ue": 21 }
+          ]
+        },
+        {
+          "pole": "SPÉCIALITÉ : SA",
+          "matieres": [
+            { "nom": "MÉCANIQUE SPATIALE", "code": "Sp423", "coeff_ue": 25 },
+            { "nom": "PROJET DE CONCEPTION DE MISSION 1", "code": "Sp424", "coeff_ue": 22 },
+            { "nom": "SPACE INSTRUMENTATION", "code": "Sp425", "coeff_ue": 19 },
+            { "nom": "PHYSIQUE DES PLASMAS ET PROPULSION ÉLECTRIQUE", "code": "Sp428", "coeff_ue": 21 }
+          ]
+        }
+      ],
+      "MAJEURE ELS (ESPACE, LANCEURS ET SATELLITES)": [
+        {
+          "pole": "TRONC COMMUN : SCIENCES HUMAINES ET LANGUES",
+          "matieres": [
+            { "nom": "ETHIQUE ENVIRONNEMENTALE", "code": "Sh421", "coeff_ue": 41 },
+            { "nom": "SOCIOLOGIE DES ENTREPRISES ET DES ORGANISATIONS", "code": "Sh422", "coeff_ue": 30 },
+            { "nom": "DROIT DES ACTIVITÉS AÉROSPATIALES", "code": "Sh424", "coeff_ue": 29 },
+            { "nom": "PRÉPARATION RENFORCÉE TOEIC", "code": "La421", "coeff_ue": 0 }
+          ]
+        },
+        {
+          "pole": "TRONC COMMUN : CONNAISSANCE DE L'ENTREPRISE",
+          "matieres": [
+            { "nom": "QUALITÉ - RÉGLEMENTATION - NORMES - LEAN", "code": "Mi421", "coeff_ue": 25 },
+            { "nom": "PRINCIPES DE STRATÉGIE D'ENTREPRISE", "code": "Mi422", "coeff_ue": 24 },
+            { "nom": "GESTION D'ENTREPRISE ET ANALYSE FINANCIÈRE", "code": "Mi423", "coeff_ue": 51 },
+            { "nom": "EVALUATION INDUSTRIEL (STAGE)", "code": "St421", "coeff_ue": 50 },
+            { "nom": "RAPPORT DE STAGE", "code": "St422", "coeff_ue": 50 }
+          ]
+        },
+        {
+          "pole": "TRONC COMMUN : SCIENCES DE L'INGÉNIEUR",
+          "matieres": [
+            { "nom": "REPRÉSENTATION GRAPHIQUE DES SYSTÈMES MULTIPHYSIQUES", "code": "Au421", "coeff_ue": 35 },
+            { "nom": "PRINCIPES DE BASE DE CONCEPTION AVION ET ÉCO-CONCEPTION", "code": "Mi426", "coeff_ue": 20 },
+            { "nom": "MÉCANIQUE DU VOL : QUALITÉS DE VOL", "code": "Aé421", "coeff_ue": 45 },
+            { "nom": "MODULE ÉLECTIF 1", "code": "Mo421a", "coeff_ue": 33 },
+            { "nom": "MODULE ÉLECTIF 2", "code": "Mo422a", "coeff_ue": 33 },
+            { "nom": "INITIATION À LA RECHERCHE ET À L'INNOVATION", "code": "Ci421a", "coeff_ue": 34 }
+          ]
+        },
+        {
+          "pole": "FILIÈRE VÉHICULES",
+          "matieres": [
+            { "nom": "DYNAMIQUE DES FLUIDES", "code": "Mf421", "coeff_ue": 30 },
+            { "nom": "PRODUCTION ÉLECTRIQUE ET HYDROGÈNE", "code": "En426", "coeff_ue": 22 },
+            { "nom": "THÉORIE DES PLAQUES ET DES COQUES", "code": "Mé421", "coeff_ue": 24 },
+            { "nom": "CALCUL NUMÉRIQUE EN MÉCANIQUE DES STRUCTURES (MEF)", "code": "Mé422", "coeff_ue": 24 }
+          ]
+        },
+        {
+          "pole": "SPÉCIALITÉ : ELS",
+          "matieres": [
+            { "nom": "MÉCANIQUE SPATIALE", "code": "Sp423", "coeff_ue": 25 },
+            { "nom": "PROJET DE CONCEPTION DE MISSION 1", "code": "Sp424", "coeff_ue": 22 },
+            { "nom": "SPACE INSTRUMENTATION", "code": "Sp425", "coeff_ue": 19 },
+            { "nom": "PHYSIQUE DES PLASMAS ET PROPULSION ÉLECTRIQUE", "code": "Sp428", "coeff_ue": 21 },
+            { "nom": "MÉTHODES NUMÉRIQUES POUR LE SPATIAL", "code": "Sp427", "coeff_ue": 13 }
+          ]
+        }
+      ],
+      "MAJEURE PA (PROPULSION AÉROSPATIALE)": [
+        {
+          "pole": "TRONC COMMUN : SCIENCES HUMAINES ET LANGUES",
+          "matieres": [
+            { "nom": "ETHIQUE ENVIRONNEMENTALE", "code": "Sh421", "coeff_ue": 41 },
+            { "nom": "SOCIOLOGIE DES ENTREPRISES ET DES ORGANISATIONS", "code": "Sh422", "coeff_ue": 30 },
+            { "nom": "DROIT DES ACTIVITÉS AÉROSPATIALES", "code": "Sh424", "coeff_ue": 29 },
+            { "nom": "PRÉPARATION RENFORCÉE TOEIC", "code": "La421", "coeff_ue": 0 }
+          ]
+        },
+        {
+          "pole": "TRONC COMMUN : CONNAISSANCE DE L'ENTREPRISE",
+          "matieres": [
+            { "nom": "QUALITÉ - RÉGLEMENTATION - NORMES - LEAN", "code": "Mi421", "coeff_ue": 25 },
+            { "nom": "PRINCIPES DE STRATÉGIE D'ENTREPRISE", "code": "Mi422", "coeff_ue": 24 },
+            { "nom": "GESTION D'ENTREPRISE ET ANALYSE FINANCIÈRE", "code": "Mi423", "coeff_ue": 51 },
+            { "nom": "EVALUATION INDUSTRIEL (STAGE)", "code": "St421", "coeff_ue": 50 },
+            { "nom": "RAPPORT DE STAGE", "code": "St422", "coeff_ue": 50 }
+          ]
+        },
+        {
+          "pole": "TRONC COMMUN : SCIENCES DE L'INGÉNIEUR",
+          "matieres": [
+            { "nom": "REPRÉSENTATION GRAPHIQUE DES SYSTÈMES MULTIPHYSIQUES", "code": "Au421", "coeff_ue": 35 },
+            { "nom": "PRINCIPES DE BASE DE CONCEPTION AVION ET ÉCO-CONCEPTION", "code": "Mi426", "coeff_ue": 20 },
+            { "nom": "MÉCANIQUE DU VOL : QUALITÉS DE VOL", "code": "Aé421", "coeff_ue": 45 },
+            { "nom": "MODULE ÉLECTIF 1", "code": "Mo421a", "coeff_ue": 33 },
+            { "nom": "MODULE ÉLECTIF 2", "code": "Mo422a", "coeff_ue": 33 },
+            { "nom": "INITIATION À LA RECHERCHE ET À L'INNOVATION", "code": "Ci421a", "coeff_ue": 34 }
+          ]
+        },
+        {
+          "pole": "FILIÈRE VÉHICULES",
+          "matieres": [
+            { "nom": "DYNAMIQUE DES FLUIDES", "code": "Mf421", "coeff_ue": 30 },
+            { "nom": "PRODUCTION ÉLECTRIQUE ET HYDROGÈNE", "code": "En426", "coeff_ue": 22 },
+            { "nom": "THÉORIE DES PLAQUES ET DES COQUES", "code": "Mé421", "coeff_ue": 24 },
+            { "nom": "CALCUL NUMÉRIQUE EN MÉCANIQUE DES STRUCTURES (MEF)", "code": "Mé422", "coeff_ue": 24 }
+          ]
+        },
+        {
+          "pole": "SPÉCIALITÉ : PA",
+          "matieres": [
+            { "nom": "CONCEPTION DES TURBOMACHINES", "code": "En422", "coeff_ue": 39 },
+            { "nom": "MOTORISATION THERMIQUE POUR DRONES", "code": "En423", "coeff_ue": 25 },
+            { "nom": "ENERGIE ET PROPULSION NUCLÉAIRES", "code": "En424", "coeff_ue": 25 },
+            { "nom": "INITIATION À L'AÉRO-ACOUSTIQUE", "code": "En425", "coeff_ue": 11 }
+          ]
+        }
+      ],
+      "MAJEURE CA (CELLULES AÉRONAUTIQUES)": [
+        {
+          "pole": "TRONC COMMUN : SCIENCES HUMAINES ET LANGUES",
+          "matieres": [
+            { "nom": "ETHIQUE ENVIRONNEMENTALE", "code": "Sh421", "coeff_ue": 41 },
+            { "nom": "SOCIOLOGIE DES ENTREPRISES ET DES ORGANISATIONS", "code": "Sh422", "coeff_ue": 30 },
+            { "nom": "DROIT DES ACTIVITÉS AÉROSPATIALES", "code": "Sh424", "coeff_ue": 29 },
+            { "nom": "PRÉPARATION RENFORCÉE TOEIC", "code": "La421", "coeff_ue": 0 }
+          ]
+        },
+        {
+          "pole": "TRONC COMMUN : CONNAISSANCE DE L'ENTREPRISE",
+          "matieres": [
+            { "nom": "QUALITÉ - RÉGLEMENTATION - NORMES - LEAN", "code": "Mi421", "coeff_ue": 25 },
+            { "nom": "PRINCIPES DE STRATÉGIE D'ENTREPRISE", "code": "Mi422", "coeff_ue": 24 },
+            { "nom": "GESTION D'ENTREPRISE ET ANALYSE FINANCIÈRE", "code": "Mi423", "coeff_ue": 51 },
+            { "nom": "EVALUATION INDUSTRIEL (STAGE)", "code": "St421", "coeff_ue": 50 },
+            { "nom": "RAPPORT DE STAGE", "code": "St422", "coeff_ue": 50 }
+          ]
+        },
+        {
+          "pole": "TRONC COMMUN : SCIENCES DE L'INGÉNIEUR",
+          "matieres": [
+            { "nom": "REPRÉSENTATION GRAPHIQUE DES SYSTÈMES MULTIPHYSIQUES", "code": "Au421", "coeff_ue": 35 },
+            { "nom": "PRINCIPES DE BASE DE CONCEPTION AVION ET ÉCO-CONCEPTION", "code": "Mi426", "coeff_ue": 20 },
+            { "nom": "MÉCANIQUE DU VOL : QUALITÉS DE VOL", "code": "Aé421", "coeff_ue": 45 },
+            { "nom": "MODULE ÉLECTIF 1", "code": "Mo421a", "coeff_ue": 33 },
+            { "nom": "MODULE ÉLECTIF 2", "code": "Mo422a", "coeff_ue": 33 },
+            { "nom": "INITIATION À LA RECHERCHE ET À L'INNOVATION", "code": "Ci421a", "coeff_ue": 34 }
+          ]
+        },
+        {
+          "pole": "FILIÈRE VÉHICULES",
+          "matieres": [
+            { "nom": "DYNAMIQUE DES FLUIDES", "code": "Mf421", "coeff_ue": 30 },
+            { "nom": "PRODUCTION ÉLECTRIQUE ET HYDROGÈNE", "code": "En426", "coeff_ue": 22 },
+            { "nom": "THÉORIE DES PLAQUES ET DES COQUES", "code": "Mé421", "coeff_ue": 24 },
+            { "nom": "CALCUL NUMÉRIQUE EN MÉCANIQUE DES STRUCTURES (MEF)", "code": "Mé422", "coeff_ue": 24 }
+          ]
+        },
+        {
+          "pole": "SPÉCIALITÉ : CA",
+          "matieres": [
+            { "nom": "CAO PARAMÉTRAGE SOUS CATIA", "code": "Mé424", "coeff_ue": 26 },
+            { "nom": "MATÉRIAUX COMPOSITES ET MÉTALLIQUES", "code": "Mé425", "coeff_ue": 31 },
+            { "nom": "CONCEPTION DES STRUCTURES AÉRONAUTIQUES", "code": "Mé427", "coeff_ue": 15 },
+            { "nom": "MATÉRIAUX AVANCÉS", "code": "Mé423", "coeff_ue": 28 }
+          ]
+        }
+      ]
+    }
+    },
+    "AERO 5": {
+        "Semestre 1":{
+            "International":[ ]
+        },
+        "Semestre 2": {
+            "Stage entreprise":[ ]
+        }
     }
 }

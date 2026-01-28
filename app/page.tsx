@@ -1,12 +1,11 @@
 "use client";
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useCallback } from 'react';
 import data from "@/data/matieres.json";
 import { calculerSaaS, UserGradesInput } from "@/lib/calculator";
-import { Plus, Trash2, GraduationCap, LayoutDashboard, ArrowUp } from "lucide-react";
+import { Plus, Trash2, GraduationCap, LayoutDashboard, ArrowUp, AlertTriangle } from "lucide-react";
 
 export default function SmartNotePage() {
-  // --- 1. DÉFINITION DE L'ANIMATION CSS ---
   const stylesAnimation = `
     @keyframes slideInRightShort {
       0% { opacity: 0; transform: translateX(50px); filter: blur(10px); }
@@ -17,35 +16,48 @@ export default function SmartNotePage() {
     }
   `;
 
-  // 2. ÉTATS
-  const [annee, setAnnee] = useState(Object.keys(data)[0]);
+  // --- HELPER ---
+  const getFilieres = (a: string, s: string) => {
+    try {
+      const sData = (data as any)[a]?.[s];
+      if (!sData || typeof sData !== 'object' || Array.isArray(sData)) return [];
+      return Object.keys(sData);
+    } catch { return []; }
+  };
+
+  // --- ÉTATS ---
+  const [annee, setAnnee] = useState(() => Object.keys(data)[0]);
   const [semestre, setSemestre] = useState("Semestre 1");
+  const [filiere, setFiliere] = useState(() => getFilieres(Object.keys(data)[0], "Semestre 1")[0] || "");
   const [notesInput, setNotesInput] = useState<UserGradesInput>({});
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // 3. FILIÈRES
-  const filieresDisponibles = useMemo(() => {
-    const sData = (data as any)[annee]?.[semestre] || {};
-    return Object.keys(sData);
-  }, [annee, semestre]);
+  // --- ACTIONS NAVIGATION ---
+  const handleChangeAnnee = (newAnnee: string) => {
+    if (newAnnee === annee) return;
+    const defaultSem = "Semestre 1";
+    setAnnee(newAnnee);
+    setSemestre(defaultSem);
+    const dispo = getFilieres(newAnnee, defaultSem);
+    setFiliere(dispo[0] || "");
+  };
 
-  const [filiere, setFiliere] = useState("");
-
-  useEffect(() => {
-    if (filieresDisponibles.length > 0) {
-      if (!filiere || !filieresDisponibles.includes(filiere)) {
-        setFiliere(filieresDisponibles[0]);
-      }
-    } else {
-      setFiliere("");
+  const handleChangeSemestre = (newSemestre: string) => {
+    if (newSemestre === semestre) return;
+    setSemestre(newSemestre);
+    const dispo = getFilieres(annee, newSemestre);
+    if (!dispo.includes(filiere)) {
+      setFiliere(dispo[0] || "");
     }
-  }, [filieresDisponibles, filiere]);
+  };
 
-  // 4. PERSISTANCE
+  const filieresDisponibles = useMemo(() => getFilieres(annee, semestre), [annee, semestre]);
+
+  // --- PERSISTANCE ---
   useEffect(() => {
-    const saved = localStorage.getItem('smartnote-data');
-    if (saved) {
-      try { setNotesInput(JSON.parse(saved)); } catch (e) { console.error(e); }
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('smartnote-data');
+      if (saved) { try { setNotesInput(JSON.parse(saved)); } catch (e) { console.error(e); } }
     }
   }, []);
 
@@ -55,29 +67,62 @@ export default function SmartNotePage() {
     }
   }, [notesInput]);
 
-  // 5. SCROLL & CALCULS
+  // --- SCROLL OPTIMISÉ (SEUIL AUGMENTÉ À 80px) ---
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          // J'ai mis 80 au lieu de 50 pour que ça ne "saute" pas dès qu'on touche l'écran
+          setIsScrolled(window.scrollY > 80);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // --- CALCULS ---
   const resultats = useMemo(() => {
     if (!annee || !semestre || !filiere) return null;
-    return calculerSaaS(annee, semestre, filiere, notesInput);
+    try { return calculerSaaS(annee, semestre, filiere, notesInput); } catch { return null; }
   }, [annee, semestre, filiere, notesInput]);
 
   const poles = useMemo(() => {
-    return (data as any)[annee]?.[semestre]?.[filiere] || [];
+    try {
+      const raw = (data as any)[annee]?.[semestre]?.[filiere];
+      return Array.isArray(raw) ? raw : [];
+    } catch { return []; }
   }, [annee, semestre, filiere]);
 
-  const updateNote = (code: string, index: number, field: 'valeur' | 'coef', value: number) => {
-    const newNotes = { ...notesInput };
-    if (!newNotes[code]) newNotes[code] = [];
-    if (newNotes[code][index]) {
-      newNotes[code][index][field] = isNaN(value) ? 0 : value;
-      setNotesInput(newNotes);
-    }
+  // --- GESTION NOTES ---
+  const updateNote = useCallback((code: string, index: number, field: 'valeur' | 'coef', value: number) => {
+    setNotesInput(prev => {
+      const copy = { ...prev };
+      if (!copy[code]) copy[code] = [];
+      else copy[code] = [...copy[code]]; 
+      if (copy[code][index]) {
+        copy[code][index] = { ...copy[code][index], [field]: isNaN(value) ? 0 : value };
+      }
+      return copy;
+    });
+  }, []);
+
+  const addNote = (code: string) => {
+    setNotesInput(prev => {
+      const curr = prev[code] || [];
+      return { ...prev, [code]: [...curr, { valeur: 0, coef: 1 }] };
+    });
+  };
+
+  const removeNote = (code: string, index: number) => {
+    setNotesInput(prev => {
+      const nextArr = [...(prev[code] || [])];
+      nextArr.splice(index, 1);
+      return { ...prev, [code]: nextArr };
+    });
   };
 
   const moyenneGeneraleStr = resultats?.moyenneGenerale || "0.00";
@@ -87,11 +132,9 @@ export default function SmartNotePage() {
     <div className="flex flex-col min-h-screen text-slate-200 pb-20 bg-[#020617]">
       <style>{stylesAnimation}</style>
 
-      {/* HEADER ANIMÉ */}
-      <header className={`sticky top-0 z-40 w-full border-b transition-all duration-300 ${isScrolled ? 'bg-[#0f172a]/95 border-slate-800 shadow-xl py-2' : 'bg-transparent border-transparent py-4'}`}>
+      {/* HEADER */}
+      <header className={`sticky top-0 z-40 w-full border-b transition-all duration-500 transform-gpu ${isScrolled ? 'bg-[#0f172a]/95 backdrop-blur-md border-slate-800 shadow-xl py-2' : 'bg-transparent border-transparent py-4'}`}>
         <div className="max-w-[1100px] mx-auto px-4 sm:px-6 flex items-center justify-between">
-            
-            {/* Logo */}
             <div className="flex items-center gap-2 shrink-0">
                 <div className="bg-[#facc15] p-1.5 rounded-lg shadow-lg">
                     <GraduationCap size={18} className="text-[#020617]" />
@@ -100,10 +143,7 @@ export default function SmartNotePage() {
                   SmartNote
                 </span>
             </div>
-
-            {/* INFO MINIATURE */}
             <div className={`flex items-center gap-3 sm:gap-4 transition-all duration-500 ease-out transform ${isScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}>
-                
                 <div className="text-right">
                     <p className="text-[7px] sm:text-[8px] uppercase font-black text-slate-500 leading-none mb-0.5">Moyenne</p>
                     <p className="text-xs sm:text-sm font-black text-[#facc15] leading-none">
@@ -111,8 +151,6 @@ export default function SmartNotePage() {
                         <span className="text-[8px] sm:text-[10px] text-slate-600 ml-0.5">/20</span>
                     </p>
                 </div>
-
-                {/* Badge Statut (MODIFIÉ ICI : ROUGE SI EN ATTENTE) */}
                 <div className={`px-2 py-1 sm:px-3 rounded-full border text-[9px] sm:text-[10px] font-black uppercase tracking-widest whitespace-nowrap ${moyenneGeneraleNum >= 10 ? 'bg-blue-500/10 border-blue-500 text-blue-400' : 'bg-red-500/10 border-red-500 text-red-400'}`}>
                     {moyenneGeneraleNum >= 10 ? 'Admis' : 'Attente'}
                 </div>
@@ -122,35 +160,29 @@ export default function SmartNotePage() {
 
       <main className="flex-1 max-w-[1100px] w-full mx-auto p-3 sm:p-8 space-y-6">
         
-        {/* GRANDE CARTE SCORE */}
-        <div className={`p-6 sm:p-8 glass-card rounded-[28px] border border-slate-700/50 bg-slate-900/40 relative overflow-hidden transition-all duration-500 ${isScrolled ? 'opacity-0 scale-95 pointer-events-none h-0 p-0 m-0 overflow-hidden' : 'opacity-100 scale-100'}`}>
+        {/* SCORE CARD (CORRECTION BUG DE SCROLL) 
+            J'ai retiré : 'h-0 p-0 m-0 overflow-hidden' quand isScrolled est true.
+            Maintenant, la carte reste là (invisible) donc le contenu ne saute pas.
+        */}
+        <div className={`p-6 sm:p-8 glass-card rounded-[28px] border border-slate-700/50 bg-slate-900/40 relative overflow-hidden transition-all duration-500 transform-gpu ${isScrolled ? 'opacity-0 pointer-events-none blur-sm scale-95' : 'opacity-100 scale-100'}`}>
           <div className="absolute -top-6 -right-6 opacity-5 rotate-12"><LayoutDashboard size={150} /></div>
-          
           <div className="relative z-10 flex flex-col sm:flex-row justify-between items-center gap-6">
             <div className="text-center sm:text-left">
               <h2 className="text-slate-500 uppercase text-[0.65rem] font-black tracking-[0.3em] mb-2">Moyenne Semestrielle</h2>
               <div className="flex items-baseline gap-2 justify-center sm:justify-start overflow-hidden">
-                <span 
-                    key={moyenneGeneraleStr} 
-                    className="text-6xl sm:text-7xl font-black text-[#facc15] tracking-tighter drop-shadow-2xl animate-slide-right inline-block"
-                >
+                <span key={moyenneGeneraleStr} className="text-6xl sm:text-7xl font-black text-[#facc15] tracking-tighter drop-shadow-2xl animate-slide-right inline-block">
                     {moyenneGeneraleStr}
                 </span>
                 <span className="text-xl sm:text-2xl text-slate-600 font-bold">/20</span>
               </div>
             </div>
-
             <div className="w-full sm:w-auto overflow-hidden rounded-2xl">
                 <div className="flex justify-center sm:block bg-slate-900/60 p-3 sm:p-4 border border-slate-800 w-full sm:w-36 backdrop-blur-sm">
                    <div className="text-center">
                       <p className="text-[9px] text-slate-500 font-black mb-1 uppercase tracking-widest">Statut</p>
-                      
-                      {/* STATUT (MODIFIÉ ICI : ROUGE SI EN ATTENTE) */}
-                      <p 
-                        key={moyenneGeneraleNum >= 10 ? 'admis' : 'attente'}
-                        className={`text-lg sm:text-xl font-black uppercase tracking-tighter animate-slide-right ${moyenneGeneraleNum >= 10 ? 'text-blue-400' : 'text-red-400'}`}
-                        style={{ animationDelay: '0.1s' }}
-                      >
+                      <p key={moyenneGeneraleNum >= 10 ? 'admis' : 'attente'} 
+                         className={`text-lg sm:text-xl font-black uppercase tracking-tighter animate-slide-right ${moyenneGeneraleNum >= 10 ? 'text-blue-400' : 'text-red-400'}`}
+                         style={{ animationDelay: '0.1s' }}>
                           {moyenneGeneraleNum >= 10 ? 'Admis' : 'En attente'}
                       </p>
                    </div>
@@ -159,13 +191,12 @@ export default function SmartNotePage() {
           </div>
         </div>
 
-        {/* NAVIGATION SELECTORS */}
+        {/* NAVIGATION */}
         <div className="space-y-4">
           <div className="glass-card p-1.5 sm:p-2 rounded-2xl flex flex-col sm:flex-row gap-2 bg-slate-900/30 border border-slate-800/60">
             <div className="flex overflow-x-auto pb-1 sm:pb-0 gap-1 sm:gap-2 no-scrollbar">
                 {Object.keys(data).map(a => (
-                <button key={a} onClick={() => setAnnee(a)} 
-                    className={`flex-shrink-0 px-4 py-2 rounded-xl text-xs font-black transition-all uppercase whitespace-nowrap ${annee === a ? 'bg-[#facc15] text-[#020617]' : 'text-slate-500 hover:bg-slate-800'}`}>
+                <button key={a} onClick={() => handleChangeAnnee(a)} className={`flex-shrink-0 px-4 py-2 rounded-xl text-xs font-black transition-all uppercase whitespace-nowrap ${annee === a ? 'bg-[#facc15] text-[#020617]' : 'text-slate-500 hover:bg-slate-800'}`}>
                     {a}
                 </button>
                 ))}
@@ -173,8 +204,7 @@ export default function SmartNotePage() {
             <div className="h-[1px] sm:h-auto sm:w-[1px] bg-slate-800 mx-1"></div>
             <div className="flex gap-1 sm:gap-2">
                 {Object.keys((data as any)[annee] || {}).map(s => (
-                <button key={s} onClick={() => setSemestre(s)}
-                    className={`flex-1 sm:flex-none px-4 py-2 rounded-xl text-[10px] sm:text-xs font-black transition-all uppercase ${semestre === s ? 'bg-slate-700 text-white' : 'text-slate-600 hover:bg-slate-800'}`}>
+                <button key={s} onClick={() => handleChangeSemestre(s)} className={`flex-1 sm:flex-none px-4 py-2 rounded-xl text-[10px] sm:text-xs font-black transition-all uppercase ${semestre === s ? 'bg-slate-700 text-white' : 'text-slate-600 hover:bg-slate-800'}`}>
                     {s}
                 </button>
                 ))}
@@ -184,8 +214,7 @@ export default function SmartNotePage() {
             <div className="flex flex-wrap gap-2 items-center px-1">
               <span className="text-[9px] font-black text-slate-600 uppercase tracking-widest hidden sm:inline">Filière :</span>
               {filieresDisponibles.map(f => (
-                <button key={f} onClick={() => setFiliere(f)}
-                  className={`px-3 py-1.5 rounded-full text-[9px] font-bold border transition-all ${filiere === f ? 'bg-blue-500/10 border-blue-500 text-blue-400' : 'border-slate-800 text-slate-500'}`}>
+                <button key={f} onClick={() => setFiliere(f)} className={`px-3 py-1.5 rounded-full text-[9px] font-bold border transition-all ${filiere === f ? 'bg-blue-500/10 border-blue-500 text-blue-400' : 'border-slate-800 text-slate-500'}`}>
                   {f}
                 </button>
               ))}
@@ -193,11 +222,12 @@ export default function SmartNotePage() {
           )}
         </div>
 
-        {/* LISTE DES PÔLES */}
+        {/* LISTES */}
         <div className="space-y-8">
-          {poles.map((pole: any, pIdx: number) => (
-            <section key={pIdx} className="glass-card rounded-[24px] border border-slate-800/80 bg-[#0f172a]/40 overflow-hidden shadow-xl">
-              <div className="px-5 py-3 sm:px-8 sm:py-4 bg-slate-800/40 border-b border-slate-800 flex justify-between items-center">
+          {poles.length > 0 ? (
+             poles.map((pole: any, pIdx: number) => (
+            <section key={pIdx} className="rounded-[24px] border border-slate-800 bg-[#0f172a] shadow-xl transform-gpu will-change-transform">
+              <div className="px-5 py-3 sm:px-8 sm:py-4 bg-slate-800/30 border-b border-slate-800 flex justify-between items-center">
                 <h3 className="font-black text-[9px] sm:text-[10px] uppercase tracking-widest text-slate-400 truncate max-w-[70%]">{pole.pole}</h3>
                 <span className={`text-base sm:text-lg font-black ${parseFloat(resultats?.details[pIdx]?.moyennePole || "0") >= 10 ? 'text-green-400' : 'text-red-400'}`}>
                     {resultats?.details[pIdx]?.moyennePole || "0.00"}
@@ -208,7 +238,7 @@ export default function SmartNotePage() {
                   const detailM = resultats?.details[pIdx]?.matieres.find((m:any) => m.nom === matiere.nom);
                   const noteMoy = parseFloat(detailM?.moyenne || "0");
                   return (
-                    <div key={matiere.code} className="p-4 sm:px-6 sm:py-5 hover:bg-slate-800/5 transition-colors group">
+                    <div key={matiere.code} className="p-4 sm:px-6 sm:py-5 hover:bg-slate-800/20 transition-colors group">
                       <div className="flex justify-between items-start mb-4 sm:mb-0 sm:items-center">
                         <div className="flex items-start gap-3 flex-1">
                             <div className={`mt-1.5 w-2 h-2 rounded-full shrink-0 ${detailM?.moyenne === "N/A" ? 'bg-slate-700' : noteMoy >= 10 ? 'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.5)]' : 'bg-red-500'}`} />
@@ -245,19 +275,12 @@ export default function SmartNotePage() {
                                     <input type="number" inputMode="decimal" step="any" className="w-6 sm:w-8 bg-transparent text-center text-[9px] sm:text-[10px] text-slate-400 font-bold outline-none p-0"
                                     value={n.coef || ""} onChange={(e) => updateNote(matiere.code, i, 'coef', parseFloat(e.target.value))} />
                                 </div>
-                                <button onClick={() => {
-                                    const next = {...notesInput};
-                                    next[matiere.code].splice(i, 1);
-                                    setNotesInput({...next});
-                                }} className="text-slate-700 hover:text-red-500 flex justify-center items-center w-6 sm:w-0 sm:group-hover/item:w-6 overflow-hidden transition-all duration-200">
+                                <button onClick={() => removeNote(matiere.code, i)} className="text-slate-700 hover:text-red-500 flex justify-center items-center w-6 sm:w-0 sm:group-hover/item:w-6 overflow-hidden transition-all duration-200">
                                     <Trash2 size={14}/>
                                 </button>
                             </div>
                           ))}
-                          <button onClick={() => {
-                            const curr = notesInput[matiere.code] || [];
-                            setNotesInput({...notesInput, [matiere.code]: [...curr, {valeur: 0, coef: 1}]});
-                          }} className="w-10 h-10 rounded-xl border border-dashed border-slate-700 text-slate-600 hover:border-[#facc15] hover:text-[#facc15] flex items-center justify-center transition-all bg-slate-900/20 active:scale-95">
+                          <button onClick={() => addNote(matiere.code)} className="w-10 h-10 rounded-xl border border-dashed border-slate-700 text-slate-600 hover:border-[#facc15] hover:text-[#facc15] flex items-center justify-center transition-all bg-slate-900/20 active:scale-95">
                             <Plus size={18} />
                           </button>
                       </div>
@@ -266,13 +289,22 @@ export default function SmartNotePage() {
                 })}
               </div>
             </section>
-          ))}
+          ))
+          ) : (
+            <div className="flex flex-col items-center justify-center py-20 border-2 border-dashed border-slate-800 rounded-[28px] text-slate-500 gap-4">
+                <div className="bg-slate-800/50 p-4 rounded-full"><AlertTriangle size={32} /></div>
+                <div className="text-center px-4">
+                    <p className="font-bold text-lg text-slate-400">Aucune donnée trouvée</p>
+                    <p className="text-xs mt-1 max-w-xs mx-auto">
+                        Il semble que les matières pour <span className="text-[#facc15]">{annee} / {semestre}</span> soient manquantes.
+                    </p>
+                </div>
+            </div>
+          )}
         </div>
       </main>
       
-      <button 
-        onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
-        className={`fixed bottom-6 right-6 p-3 bg-[#facc15] text-[#020617] rounded-full shadow-lg shadow-[#facc15]/20 transition-all duration-500 z-50 ${isScrolled ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
+      <button onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} className={`fixed bottom-6 right-6 p-3 bg-[#facc15] text-[#020617] rounded-full shadow-lg shadow-[#facc15]/20 transition-all duration-500 z-50 ${isScrolled ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
         <ArrowUp size={24} strokeWidth={3} />
       </button>
     </div>
