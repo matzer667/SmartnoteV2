@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- AJOUTE TOUT CE QUI SUIT EN BAS DU FICHIER --- */
+
+/* 1. Configuration globale (Scroll & Couleur de fond) */
+html, body {
+  background-color: #020617; /* Bleu nuit profond */
+  overflow-x: hidden;       /* Bloque le scroll horizontal sur tout le site */
+  width: 100%;
+}
+
+/* 2. Animations personnalisées */
+@keyframes slideInRightShort {
+  0% { opacity: 0; transform: translateX(50px); filter: blur(10px); }
+  100% { opacity: 1; transform: translateX(0); filter: blur(0); }
+}
+
+.animate-slide-right {
+  animation: slideInRightShort 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.animate-pop-in {
+  animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* 3. Style du Curseur (Range Slider) */
+.range-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #ef4444 0%, #facc15 50%, #22c55e 100%);
+  outline: none;
+  cursor: pointer;
+}
+
+/* Rond du curseur (Chrome/Safari/Edge) */
+.range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #0f172a;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  cursor: grab;
+  transition: transform 0.1s;
+}
+
+.range-slider::-webkit-slider-thumb:active {
+  transform: scale(1.3);
+  cursor: grabbing;
+}
+
+/* Rond du curseur (Firefox) */
+.range-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #0f172a;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  cursor: grab;
+  transition: transform 0.1s;
+  border: none;
+}
