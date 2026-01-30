@@ -1,7 +1,7 @@
 // C'est ici qu'on définit le "vocabulaire" de ton application
 
 export type NoteData = {
-  valeur: number;
+  valeur: string;
   coef: number;
   isSimulated?: boolean;
 };

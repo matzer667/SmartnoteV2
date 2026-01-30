@@ -5,15 +5,13 @@ import data from "@/data/matieres.json";
 import { calculerSaaS } from "@/lib/calculator";
 import { NotesState, SimConfig } from "@/lib/types";
 
-// --- IMPORTS DES COMPOSANTS (Chemins en minuscules) ---
-// Note : On garde la Majuscule pour le nom de la variable (Header, Footer...)
+// --- IMPORTS DES COMPOSANTS ---
 import Header from "@/app/components/header";
 import ScoreCard from "@/app/components/scorecard";
 import SimulationModal from "@/app/components/simulationmodal";
 import Footer from "@/app/components/footer";
 
-// --- ICONES ---
-import { Trash2, ArrowUp, AlertTriangle, Wand2, Plus, MinusCircle, PlusCircle } from "lucide-react";
+import { Trash2, Wand2, Plus, AlertTriangle, ArrowUp } from "lucide-react";
 
 export default function SmartNotePage() {
   
@@ -38,7 +36,6 @@ export default function SmartNotePage() {
     } catch { return []; }
   };
   
-  // Initialisation safe de la filière
   useEffect(() => {
       if(!filiere) setFiliere(getFilieres(annee, semestre)[0] || "");
   }, []); // eslint-disable-line
@@ -80,7 +77,6 @@ export default function SmartNotePage() {
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => { 
-            // On déclenche l'effet "scrolled" après 50px
             setIsScrolled(window.scrollY > 50); 
             ticking = false; 
         });
@@ -91,11 +87,21 @@ export default function SmartNotePage() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // --- CALCULS ---
+  // --- CALCULS (CORRECTIF APPLIQUÉ ICI) ---
   const resultats = useMemo(() => {
     if (!annee || !semestre || !filiere) return null;
     try { 
-        return calculerSaaS(annee, semestre, filiere, notesInput as any); 
+        // 🛠️ CORRECTIF : On utilise String() pour éviter le crash si c'est un nombre
+        const notesSanitized = Object.entries(notesInput).reduce((acc, [code, notes]) => {
+            acc[code] = notes.map(n => ({
+                ...n,
+                // Protection contre les anciens nombres dans le localStorage
+                valeur: parseFloat(String(n.valeur).replace(',', '.')) || 0 
+            }));
+            return acc;
+        }, {} as any);
+
+        return calculerSaaS(annee, semestre, filiere, notesSanitized); 
     } catch { return null; }
   }, [annee, semestre, filiere, notesInput]);
 
@@ -138,12 +144,21 @@ export default function SmartNotePage() {
   
   const updateSimItem = (code: string, idx: number, f: 'coef'|'affinity', v: number) => setSimConfig(p => { const n = [...(p[code]||[])]; n[idx] = { ...n[idx], [f]: v }; return { ...p, [code]: n }; });
 
+  // 🛠️ CORRECTIF AUSSI ICI POUR LA PREVIEW
   const simPreview = useMemo(() => {
     if (simTargetPoleIndex === null || !poles[simTargetPoleIndex]) return {};
     const matieresDuPole = poles[simTargetPoleIndex].matieres;
     let ptsAcquis = 0, coefAcquis = 0, weightedAffinity = 0, coefSim = 0;
     
-    matieresDuPole.forEach((m: any) => (notesInput[m.code] || []).forEach(n => { if (!n.isSimulated) { ptsAcquis += n.valeur * n.coef; coefAcquis += n.coef; } }));
+    matieresDuPole.forEach((m: any) => (notesInput[m.code] || []).forEach(n => { 
+        if (!n.isSimulated) { 
+            // On sécurise avec String() ici aussi
+            const valNum = parseFloat(String(n.valeur).replace(',', '.')) || 0;
+            ptsAcquis += valNum * n.coef; 
+            coefAcquis += n.coef; 
+        } 
+    }));
+    
     matieresDuPole.forEach((m: any) => (simConfig[m.code] || []).forEach(s => { coefSim += s.coef; weightedAffinity += Math.max(1, s.affinity) * s.coef; }));
 
     const coefGlobal = coefAcquis + coefSim;
@@ -164,30 +179,41 @@ export default function SmartNotePage() {
     poles[simTargetPoleIndex].matieres.forEach((m: any) => {
         if (nextNotes[m.code]) nextNotes[m.code] = nextNotes[m.code].filter((n:any) => !n.isSimulated);
         else nextNotes[m.code] = [];
-        (simConfig[m.code] || []).forEach(s => nextNotes[m.code].push({ valeur: simPreview[s.id] || 0, coef: s.coef, isSimulated: true }));
+        (simConfig[m.code] || []).forEach(s => {
+            const val = simPreview[s.id] || 0;
+            nextNotes[m.code].push({ valeur: val.toString(), coef: s.coef, isSimulated: true });
+        });
     });
     setNotesInput(nextNotes); setSimModalOpen(false);
   };
 
-  // --- LOGIQUE NOTES ---
+  // --- LOGIQUE NOTES (INPUT STRING) ---
   const handleInputChange = (code: string, idx: number, field: 'valeur' | 'coef', valStr: string) => {
-    const clean = valStr.replace(',', '.');
+    const clean = valStr.replace(',', '.'); 
+    
     if (clean === '' || /^\d*\.?\d*$/.test(clean)) {
         setNotesInput(p => {
             const next = { ...p, [code]: [...(p[code] || [])] };
-            if (next[code][idx]) next[code][idx] = { ...next[code][idx], [field]: clean === '' ? 0 : parseFloat(clean), isSimulated: false };
+            if (next[code][idx]) {
+                next[code][idx] = { 
+                    ...next[code][idx], 
+                    // Si c'est 'valeur', on garde la string. Si 'coef', on garde number.
+                    [field]: field === 'valeur' ? valStr : (clean === '' ? 0 : parseFloat(clean)), 
+                    isSimulated: false 
+                };
+            }
             return next;
         });
     }
   };
-  const addNote = (code: string) => setNotesInput(p => ({ ...p, [code]: [...(p[code] || []), { valeur: 0, coef: 1, isSimulated: false }] }));
+
+  const addNote = (code: string) => setNotesInput(p => ({ ...p, [code]: [...(p[code] || []), { valeur: "", coef: 1, isSimulated: false }] }));
   const removeNote = (code: string, idx: number) => setNotesInput(p => { const n = [...(p[code]||[])]; n.splice(idx, 1); return { ...p, [code]: n }; });
 
   const moyenneGeneraleStr = resultats?.moyenneGenerale || "0.00";
 
   // --- RENDER ---
   return (
-    // CORRECTION SCROLL : Pas de overflow-hidden ici !
     <div className="flex flex-col min-h-screen text-slate-200 pb-20 bg-[#020617] w-full">
       
       {/* 1. MODAL */}
@@ -216,7 +242,6 @@ export default function SmartNotePage() {
         
         {/* 3. SCORE CARD */}
         <ScoreCard 
-            isScrolled={isScrolled}
             moyenneGeneraleStr={moyenneGeneraleStr}
             statutCss={statutInfo.css}
             statutText={statutInfo.text}
@@ -321,7 +346,7 @@ export default function SmartNotePage() {
                                         inputMode="decimal" 
                                         className={`w-10 bg-transparent text-center text-base sm:text-sm font-black outline-none p-0 placeholder-slate-700 ${n.isSimulated ? 'text-cyan-400' : 'text-[#facc15]'}`}
                                         placeholder="0"
-                                        value={n.valeur === 0 && !n.isSimulated ? '' : n.valeur} 
+                                        value={n.valeur} 
                                         onChange={(e) => handleInputChange(matiere.code, i, 'valeur', e.target.value)} 
                                     />
                                 </div>
