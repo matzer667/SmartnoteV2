@@ -174,7 +174,7 @@ export default function LandingPage() {
         </section>
 <footer className="border-t border-slate-800 py-8 text-center text-[10px] text-slate-600 uppercase tracking-widest flex flex-wrap justify-center items-center gap-x-1">
     <span>© {new Date().getFullYear()} SmartNote • Powered by</span>
-    <a href="https://nayzen.studio" target="_blank" rel="noopener noreferrer" className="font-bold text-slate-500 hover:text-[#facc15] transition-colors">
+    <a href="https://nayzenstudio.com" target="_blank" rel="noopener noreferrer" className="font-bold text-slate-500 hover:text-[#facc15] transition-colors">
         Nayzen Studio
     </a>
     <span className="text-slate-700">•</span>

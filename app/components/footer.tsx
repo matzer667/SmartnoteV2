@@ -17,7 +17,7 @@ export default function Footer() {
             <span>© {new Date().getFullYear()} SmartNote • Powered by</span>
             
             <a 
-                href="https://nayzen.studio" 
+                href="https://nayzenstudio.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="font-bold text-slate-500 hover:text-[#facc15] transition-colors"
