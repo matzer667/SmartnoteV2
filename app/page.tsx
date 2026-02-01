@@ -51,7 +51,7 @@ export default function LandingPage() {
                 </h1>
                 
                 <p className="max-w-md mx-auto text-slate-400 text-sm sm:text-base leading-relaxed px-4">
-                    Ne laissez plus vos notes au hasard. Simulez, analysez et validez votre semestre avec une précision chirurgicale.
+                    Ne laissez plus vos notes au hasard. Simulez, analysez et validez votre semestre avec précision.
                 </p>
             </div>
 
@@ -172,10 +172,16 @@ export default function LandingPage() {
                 </Link>
             </div>
         </section>
-
-        <footer className="border-t border-slate-800 py-8 text-center text-[10px] text-slate-600 uppercase tracking-widest">
-            © {new Date().getFullYear()} SmartNote • Roméo & Mathis
-        </footer>
+<footer className="border-t border-slate-800 py-8 text-center text-[10px] text-slate-600 uppercase tracking-widest flex flex-wrap justify-center items-center gap-x-1">
+    <span>© {new Date().getFullYear()} SmartNote • Powered by</span>
+    <a href="https://nayzen.studio" target="_blank" rel="noopener noreferrer" className="font-bold text-slate-500 hover:text-[#facc15] transition-colors">
+        Nayzen Studio
+    </a>
+    <span className="text-slate-700">•</span>
+    <a href="https://instagram.com/nayzenstudio" target="_blank" rel="noopener noreferrer" className="font-bold text-slate-500 hover:text-[#facc15] transition-colors">
+        Instagram
+    </a>
+</footer>
 
       </main>
     </div>

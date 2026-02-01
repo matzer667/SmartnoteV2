@@ -3,7 +3,7 @@
     "Semestre 1": {
       "PRÉPA INTÉGRÉE": [
         {
-          "pole": "SCIENCES FONDAMENTALES",
+          "pole": "SCIENCES FONDAMENTALES", "coeff_ects": 11,
           "matieres": [
             { "nom": "ALGÈBRE", "code": "Ma111", "coeff_ue": 40 },
             { "nom": "ANALYSE", "code": "Ma112", "coeff_ue": 40 },
@@ -12,6 +12,7 @@
         },
         {
           "pole": "SCIENCES DE L'INGÉNIEUR 1",
+          "coeff_ects": 8,
           "matieres": [
             { "nom": "MÉCANIQUE DU POINT", "code": "Phv111", "coeff_ue": 49 },
             { "nom": "ELECTROCINÉTIQUE 1", "code": "El111", "coeff_ue": 31 },
@@ -19,14 +20,14 @@
           ]
         },
         {
-          "pole": "AÉRONAUTIQUE ET SPATIAL 1",
+          "pole": "AÉRONAUTIQUE ET SPATIAL 1","coeff_ects": 4,
           "matieres": [
             { "nom": "INTRODUCTION AU MONDE AÉRO ET FRESQUE DU CLIMAT", "code": "Aé111", "coeff_ue": 41 },
             { "nom": "PROJETS AÉROSPATIAUX", "code": "Gp111", "coeff_ue": 34 }
           ]
         },
         {
-          "pole": "SCIENCES HUMAINES ET LANGUES 1",
+          "pole": "SCIENCES HUMAINES ET LANGUES 1","coeff_ects": 7,
           "matieres": [
             { "nom": "HISTOIRE DES SCIENCES AÉROSPATIALES", "code": "Sh111", "coeff_ue": 34 },
             { "nom": "PROJET IMPACT", "code": "Sh113", "coeff_ue": 19 },
@@ -39,14 +40,14 @@
     "Semestre 2": {
       "PRÉPA INTÉGRÉE": [
         {
-          "pole": "SCIENCES FONDAMENTALES 2",
+          "pole": "SCIENCES FONDAMENTALES 2","coeff_ects": 9,
           "matieres": [
             { "nom": "ANALYSE ET PROBABILITÉS", "code": "Ma121", "coeff_ue": 54 },
             { "nom": "ALGÈBRE ET GÉOMÉTRIE", "code": "Ma122", "coeff_ue": 46 }
           ]
         },
         {
-          "pole": "SCIENCES DE L'INGÉNIEUR 2",
+          "pole": "SCIENCES DE L'INGÉNIEUR 2","coeff_ects": 9,
           "matieres": [
             { "nom": "MÉCANIQUE DU POINT 2", "code": "Phv121", "coeff_ue": 37 },
             { "nom": "PHYSIQUE EXPÉRIMENTALE ET OPTIQUE", "code": "Phv122", "coeff_ue": 8 },
@@ -56,14 +57,14 @@
           ]
         },
         {
-          "pole": "AÉRONAUTIQUE ET SPATIAL 2",
+          "pole": "AÉRONAUTIQUE ET SPATIAL 2","coeff_ects": 3,
           "matieres": [
             { "nom": "DÉCOUVERTE MÉTIERS ET CONFÉRENCES", "code": "Aé121", "coeff_ue": 67 },
             { "nom": "PROJETS AÉROSPATIAUX 2", "code": "Gp122", "coeff_ue": 33 }
           ]
         },
         {
-          "pole": "SCIENCES HUMAINES ET LANGUES 2",
+          "pole": "SCIENCES HUMAINES ET LANGUES 2","coeff_ects": 7,
           "matieres": [
             { "nom": "HISTOIRE AÉRO ET TECHNOLOGIE", "code": "Sh121", "coeff_ue": 28 },
             { "nom": "PROJET IMPACT 2", "code": "Sh123", "coeff_ue": 24 },
@@ -75,7 +76,7 @@
           ]
         },
         {
-          "pole": "CONNAISSANCE DE L'ENTREPRISE ET INSERTION PRO",
+          "pole": "CONNAISSANCE DE L'ENTREPRISE ET INSERTION PRO","coeff_ects": 1,
           "matieres": [
             { "nom": "STAGE / PROJET PROFESSIONNEL", "code": "St120", "coeff_ue": 100 }
           ]
@@ -87,14 +88,14 @@
     "Semestre 1": {
       "Prépa Intégrée": [
         {
-          "pole": "SCIENCES FONDAMENTALES",
+          "pole": "SCIENCES FONDAMENTALES","coeff_ects": 8,
           "matieres": [
             { "nom": "Analyse : calcul différentiel", "code": "Ma211", "coeff_ue": 55 },
             { "nom": "Analyse : intégrales multiples et curvilignes", "code": "Ma212", "coeff_ue": 45 }
           ]
         },
         {
-          "pole":"SCIENCES DE L'INGÉNIEUR : UE PSI 21",
+          "pole":"SCIENCES DE L'INGÉNIEUR : UE PSI 21","coeff_ects": 7,
           "matieres": [
             { "nom": "Thermodynamique 1", "code": "Phv211", "coeff_ue": 28 },
             { "nom": "Résistance des matériaux 1", "code": "Mé213", "coeff_ue": 31 },
@@ -103,7 +104,7 @@
           ]
         },
         {
-          "pole":"SCIENCES DE L'INGÉNIEUR : UE PSI 22",
+          "pole":"SCIENCES DE L'INGÉNIEUR : UE PSI 22","coeff_ects": 6,
           "matieres": [
             { "nom": "Electromagnétisme 1", "code": "Phs213", "coeff_ue": 28 },
             { "nom": "Physique des ondes 1 : ondes mécaniques, acoustiques", "code": "Phv212", "coeff_ue": 30 },
@@ -112,7 +113,7 @@
           ]
         },
         {
-          "pole":"AERONAUTIQUE ET SPATIAL",
+          "pole":"AERONAUTIQUE ET SPATIAL","coeff_ects": 5,
           "matieres": [
             { "nom": "Aéronautique 1", "code": "Aé211", "coeff_ue": 28 },
             { "nom": "Grand projet programmation", "code": "Gp211", "coeff_ue": 27 },
@@ -120,7 +121,7 @@
           ]
         },
         {
-          "pole":"SCIENCES HUMAINES ET LANGUES",
+          "pole":"SCIENCES HUMAINES ET LANGUES","coeff_ects": 4,
           "matieres": [
             { "nom": "Ethique de l'ingénieur aérospatial", "code": "Sh211", "coeff_ue": 30 },
             { "nom": "English for aircraft engines", "code": "La211", "coeff_ue": 41 },
@@ -132,7 +133,7 @@
     "Semestre 2": {
       "Prépa Intégrée": [
         {
-          "pole": "SCIENCES FONDAMENTALES",
+          "pole": "SCIENCES FONDAMENTALES","coeff_ects": 7,
           "matieres": [
             { "nom": "Analyse : calcul différentiel", "code": "Ma221", "coeff_ue": 42 },
             { "nom": "Analyse : intégrales multiples et curvilignes", "code": "Ma222", "coeff_ue": 44 },
@@ -140,7 +141,7 @@
           ]
         },
         {
-          "pole":"SCIENCES DE L'INGÉNIEUR : UE PSI 23",
+          "pole":"SCIENCES DE L'INGÉNIEUR : UE PSI 23","coeff_ects": 5,
           "matieres": [
             { "nom": "Thermodynamique 1", "code": "Phv221", "coeff_ue": 29 },
             { "nom": "Résistance des matériaux 1", "code": "Mé223", "coeff_ue": 28 },
@@ -149,7 +150,7 @@
           ]
         },
         {
-          "pole":"SCIENCES DE L'INGÉNIEUR : UE PSI 24",
+          "pole":"SCIENCES DE L'INGÉNIEUR : UE PSI 24","coeff_ects": 6,
           "matieres": [
             { "nom": "Electromagnétisme 1", "code": "Phs223", "coeff_ue": 17 },
             { "nom": "Physique des ondes 1 : ondes mécaniques, acoustiques", "code": "El221", "coeff_ue": 36 },
@@ -158,7 +159,7 @@
           ]
         },
         {
-          "pole":"AERONAUTIQUE ET SPATIAL",
+          "pole":"AERONAUTIQUE ET SPATIAL","coeff_ects": 6,
           "matieres": [
             { "nom": "Aéronautique 1", "code": "Aé221", "coeff_ue": 16 },
             { "nom": "Grand projet programmation", "code": "Phv222", "coeff_ue": 19 },
@@ -167,7 +168,7 @@
           ]
         },
         {
-          "pole":"SCIENCES HUMAINES ET LANGUES",
+          "pole":"SCIENCES HUMAINES ET LANGUES","coeff_ects": 1,
           "matieres": [
             { "nom": "Ethique de l'ingénieur aérospatial", "code": "Sh222", "coeff_ue": 22 },
             { "nom": "English for aircraft engines", "code": "La221", "coeff_ue": 63 },
@@ -175,7 +176,7 @@
           ]
         },
                 {
-          "pole":"CONNAISSANCE DE L'ENTREPRISE ET INSERTION PROFESSIONNELLE",
+          "pole":"CONNAISSANCE DE L'ENTREPRISE ET INSERTION PROFESSIONNELLE","coeff_ects": 4,
           "matieres": [
             { "nom": "STAGE", "code": "St220", "coeff_ue": 100 }
 
@@ -188,7 +189,7 @@
         "Semestre 1":{
             "Général":[
                 {
-                    "pole" :"SCIENCES FONDAMENTALES 1",
+                    "pole" :"SCIENCES FONDAMENTALES 1","coeff_ects": 7,
                     "matieres":[
                         {"nom": "Analyse harmonique pour l'ingénieur", "code": "Ma312", "coeff_ue": 33},
                         {"nom": "Optimisation convexe", "code": "Ma316", "coeff_ue": 34},
@@ -196,7 +197,7 @@
                     ]
                 },
                 {
-                    "pole" :"SCIENCES DE L'INGÉNIEUR - TRONC COMMUN : UE PSITC 31",
+                    "pole" :"SCIENCES DE L'INGÉNIEUR - TRONC COMMUN : UE PSITC 31","coeff_ects": 7,
                     "matieres":[
                         {"nom": "TRANSFERTS THERMIQUES 1", "code": "En311", "coeff_ue": 39},
                         {"nom": "MÉCANIQUE GÉNÉRALE 1", "code": "Mé311", "coeff_ue": 41},
@@ -204,7 +205,7 @@
                     ]
                 },
                 {
-                    "pole" :"SCIENCES DE L'INGÉNIEUR - TRONC COMMUN : UE PSITC 32",
+                    "pole" :"SCIENCES DE L'INGÉNIEUR - TRONC COMMUN : UE PSITC 32","coeff_ects": 5,
                     "matieres":[
                         {"nom": "INITIATION AUX BASES DE DONNÉES", "code": "In311", "coeff_ue": 26},
                         {"nom": "AUTOMATIQUE DES SYSTÈMES DYNAMIQUES LINÉAIRES", "code": "Au311", "coeff_ue": 28},
@@ -212,7 +213,7 @@
                     ]
                 },
                 {
-                    "pole" :"AÉRONAUTIQUE ET SPATIAL",
+                    "pole" :"AÉRONAUTIQUE ET SPATIAL","coeff_ects": 7,
                     "matieres":[
                         {"nom": "AÉRODYNAMIQUE 1", "code": "Mf311", "coeff_ue": 26},
                         {"nom": "MÉCANIQUE DU VOL - PERFORMANCE, ÉQUILIBRAGE STATIQUE", "code": "Aé312", "coeff_ue": 26},
@@ -222,7 +223,7 @@
                     ]
                 },
                 {
-                    "pole" :"SCIENCES HUMAINES ET LANGUES 1",
+                    "pole" :"SCIENCES HUMAINES ET LANGUES 1","coeff_ects": 4,
                     "matieres":[
                         {"nom": "CONDUITE ET GESTION DE PROJET", "code": "Mi311", "coeff_ue": 39},
                         {"nom": "SULITEST", "code": "Sh313", "coeff_ue": 4},
@@ -235,7 +236,7 @@
         "Semestre 2":{
             "SIGNAUX ET SYSTÈMES AÉROSPATIAUX":[
                 {
-                    "pole" :"CODE UE : PSIS31",
+                    "pole" :"CODE UE : PSIS31","coeff_ects": 5,
                     "matieres":[
                         {"nom": "SYSTÈMES D'EXPLOITATION DE BASE", "code": "In322", "coeff_ue": 22},
                         {"nom": "PROGRAMMATION EN LANGAGE C++", "code": "In323", "coeff_ue": 32},
@@ -244,7 +245,7 @@
                     ]
                 },
                 {
-                    "pole" :"CODE UE : PSIS32",
+                    "pole" :"CODE UE : PSIS32","coeff_ects": 8,
                     "matieres":[
                         {"nom": "MODÉLISATION ET SIMULATION NUMÉRIQUE APPLICATION SYSTÈMES", "code": "Ma325", "coeff_ue": 36},
                         {"nom": "REPRÉSENTATIONS D’ÉTAT DES SYSTÈMES LINÉAIRES", "code": "Au323", "coeff_ue": 18},
@@ -253,7 +254,7 @@
                     ]
                 },
                 {
-                    "pole" :"CODE UE : PSIS33",
+                    "pole" :"CODE UE : PSIS33","coeff_ects": 6,
                     "matieres":[
                         {"nom": "ÉLECTRONIQUE NUMÉRIQUE", "code": "El321", "coeff_ue": 23},
                         {"nom": "INITIATION À LA LOGIQUE PROGRAMMÉE SUR FPGA", "code": "El322", "coeff_ue": 27},
@@ -262,7 +263,7 @@
                     ]
                 },
                                 {
-                    "pole" :"CONNAISSANCE DE L'ENTREPRISE ET INSERTION PROFESSIONNELLE 2",
+                    "pole" :"CONNAISSANCE DE L'ENTREPRISE ET INSERTION PROFESSIONNELLE 2","coeff_ects": 4,
                     "matieres":[
                         {"nom": "MODÉLISATION ET ANALYSE DYNAMIQUE DES AÉRONEFS", "code": "Sh322", "coeff_ue": 21},
                         {"nom": "AÉRODYNAMIQUE 2", "code": "Sh323", "coeff_ue": 30},
@@ -272,14 +273,14 @@
                     ]
                 },
                 {
-                    "pole" :"TRONC COMMUN : SCIENCES HUMAINES ET LANGUES 2",
+                    "pole" :"TRONC COMMUN : SCIENCES HUMAINES ET LANGUES 2","coeff_ects": 2,
                     "matieres":[
                         {"nom": "MODÉLISATION ET ANALYSE DYNAMIQUE DES AÉRONEFS", "code": "Sh322", "coeff_ue": 84},
                         {"nom": "AÉRODYNAMIQUE 2", "code": "Sh323", "coeff_ue": 16}
                     ]
                 },
                 {
-                    "pole" :"CONNAISSANCE DE L'ENTREPRISE ET INSERTION PROFESSIONNELLE",
+                    "pole" :"CONNAISSANCE DE L'ENTREPRISE ET INSERTION PROFESSIONNELLE","coeff_ects": 4,
                     "matieres":[
                         {"nom": "STAGE", "code": "St320", "coeff_ue": 100}
                     ]
@@ -287,7 +288,7 @@
             ],
             "VÉHICULES AÉROSPATIAUX":[
                 {
-                    "pole" :"CODE UE : PSIV31",
+                    "pole" :"CODE UE : PSIV31","coeff_ects": 9,
                     "matieres":[
                         {"nom": "MÉCANIQUE GÉNÉRALE 2", "code": "Mé321", "coeff_ue": 19},
                         {"nom": "MODÉLISATION ET SIMULATION NUMÉRIQUE. APPLICATION VÉHICULES", "code": "Ma327", "coeff_ue": 20},
@@ -298,7 +299,7 @@
                     ]
                 },
                 {
-                    "pole" :"CODE UE : PSIV32",
+                    "pole" :"CODE UE : PSIV32","coeff_ects": 5,
                     "matieres":[
                         {"nom": "INTRODUCTION AUX TURBOMACHINES", "code": "En321", "coeff_ue": 35},
                         {"nom": "TRANSFERTS THERMIQUES 2", "code": "En322", "coeff_ue": 26},
@@ -306,7 +307,7 @@
                     ]
                 },
                 {
-                    "pole" :"CODE UE : PSIV 33",
+                    "pole" :"CODE UE : PSIV 33","coeff_ects": 5,
                     "matieres":[
                         {"nom": "MODÉLISATION ET ANALYSE DYNAMIQUE DES AÉRONEFS", "code": "Au324", "coeff_ue": 22},
                         {"nom": "AÉRODYNAMIQUE 2", "code": "Mf321", "coeff_ue": 37},
@@ -315,7 +316,7 @@
                     ]
                 },
                 {
-                    "pole" :"CONNAISSANCE DE L'ENTREPRISE ET INSERTION PROFESSIONNELLE 2",
+                    "pole" :"CONNAISSANCE DE L'ENTREPRISE ET INSERTION PROFESSIONNELLE 2","coeff_ects": 4,
                     "matieres":[
                         {"nom": "MODÉLISATION ET ANALYSE DYNAMIQUE DES AÉRONEFS", "code": "Sh322", "coeff_ue": 21},
                         {"nom": "AÉRODYNAMIQUE 2", "code": "Sh323", "coeff_ue": 30},
@@ -325,14 +326,14 @@
                     ]
                 },
                 {
-                    "pole" :"TRONC COMMUN : SCIENCES HUMAINES ET LANGUES 2",
+                    "pole" :"TRONC COMMUN : SCIENCES HUMAINES ET LANGUES 2","coeff_ects": 2,
                     "matieres":[
                         {"nom": "MODÉLISATION ET ANALYSE DYNAMIQUE DES AÉRONEFS", "code": "Sh322", "coeff_ue": 84},
                         {"nom": "AÉRODYNAMIQUE 2", "code": "Sh323", "coeff_ue": 16}
                     ]
                 },
                 {
-                    "pole" :"CONNAISSANCE DE L'ENTREPRISE ET INSERTION PROFESSIONNELLE",
+                    "pole" :"CONNAISSANCE DE L'ENTREPRISE ET INSERTION PROFESSIONNELLE","coeff_ects": 4,
                     "matieres":[
                         {"nom": "STAGE", "code": "St320", "coeff_ue": 100}
                     ]
@@ -347,7 +348,7 @@
         "Semestre 2": {
       "MAJEURE SET (SYSTÈMES EMBARQUÉS ET TÉLÉCOMS)": [
         {
-          "pole": "TRONC COMMUN : SCIENCES HUMAINES ET LANGUES",
+          "pole": "TRONC COMMUN : SCIENCES HUMAINES ET LANGUES","coeff_ects": 2,
           "matieres": [
             { "nom": "ETHIQUE ENVIRONNEMENTALE", "code": "Sh421", "coeff_ue": 41 },
             { "nom": "SOCIOLOGIE DES ENTREPRISES ET DES ORGANISATIONS", "code": "Sh422", "coeff_ue": 30 },
@@ -356,7 +357,7 @@
           ]
         },
         {
-          "pole": "TRONC COMMUN : CONNAISSANCE DE L'ENTREPRISE",
+          "pole": "TRONC COMMUN : CONNAISSANCE DE L'ENTREPRISE","coeff_ects": 3,
           "matieres": [
             { "nom": "QUALITÉ - RÉGLEMENTATION - NORMES - LEAN", "code": "Mi421", "coeff_ue": 25 },
             { "nom": "PRINCIPES DE STRATÉGIE D'ENTREPRISE", "code": "Mi422", "coeff_ue": 24 },

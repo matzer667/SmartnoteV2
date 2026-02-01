@@ -11,8 +11,30 @@ export default function Footer() {
             Aucune donnée ne quitte votre appareil. Vos notes sont stockées exclusivement dans le
             <span className="text-slate-400 font-bold"> LocalStorage</span> de votre navigateur.
         </p>
-        <p className="text-[10px] text-slate-600">
-            © {new Date().getFullYear()} SmartNote • Développé par Roméo & Mathis
+        
+        {/* LIGNE CRÉDITS + INSTAGRAM */}
+        <p className="text-[10px] text-slate-600 uppercase tracking-widest flex flex-wrap justify-center items-center gap-x-1">
+            <span>© {new Date().getFullYear()} SmartNote • Powered by</span>
+            
+            <a 
+                href="https://nayzen.studio" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="font-bold text-slate-500 hover:text-[#facc15] transition-colors"
+            >
+                Nayzen Studio
+            </a>
+
+            <span className="text-slate-700">•</span>
+
+            <a 
+                href="https://instagram.com/nayzenstudio" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="font-bold text-slate-500 hover:text-[#facc15] transition-colors"
+            >
+                Instagram
+            </a>
         </p>
     </footer>
   );
