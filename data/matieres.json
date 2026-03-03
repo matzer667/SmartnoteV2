@@ -135,27 +135,27 @@
         {
           "pole": "SCIENCES FONDAMENTALES","coeff_ects": 7,
           "matieres": [
-            { "nom": "Analyse : calcul différentiel", "code": "Ma221", "coeff_ue": 42 },
-            { "nom": "Analyse : intégrales multiples et curvilignes", "code": "Ma222", "coeff_ue": 44 },
-            { "nom": "Algèbre : espaces vectoriels et applications linéaires", "code": "Ma223", "coeff_ue": 14}
+            { "nom": "Algebre lineaire et bilinéaire", "code": "Ma221", "coeff_ue": 42 },
+            { "nom": "ANALYSE ET PROBABILITÉS", "code": "Ma222", "coeff_ue": 44 },
+            { "nom": "Genie mathematique", "code": "Ma223", "coeff_ue": 14}
           ]
         },
         {
           "pole":"SCIENCES DE L'INGÉNIEUR : UE PSI 23","coeff_ects": 5,
           "matieres": [
-            { "nom": "Thermodynamique 1", "code": "Phv221", "coeff_ue": 29 },
-            { "nom": "Résistance des matériaux 1", "code": "Mé223", "coeff_ue": 28 },
-            { "nom": "Mécanique du solide 1", "code": "Mé222", "coeff_ue": 27 },
-            { "nom": "Conception mécanique assistée par ordinateur 1", "code": "Mé221", "coeff_ue": 16 }
+            { "nom": "Thermodynamique 2", "code": "Phv221", "coeff_ue": 29 },
+            { "nom": "Résistance des matériaux 2", "code": "Mé223", "coeff_ue": 28 },
+            { "nom": "Mécanique du solide 2", "code": "Mé222", "coeff_ue": 27 },
+            { "nom": "Conception mécanique assistée par ordinateur 2", "code": "Mé221", "coeff_ue": 16 }
           ]
         },
         {
           "pole":"SCIENCES DE L'INGÉNIEUR : UE PSI 24","coeff_ects": 6,
           "matieres": [
-            { "nom": "Electromagnétisme 1", "code": "Phs223", "coeff_ue": 17 },
-            { "nom": "Physique des ondes 1 : ondes mécaniques, acoustiques", "code": "El221", "coeff_ue": 36 },
-            { "nom": "Electronique 1", "code": "Phs224", "coeff_ue": 22 },
-            { "nom": "Pratique de la programmation en Python 1", "code": "Ph225", "coeff_ue": 26 }
+            { "nom": "Electromagnétisme 2", "code": "Phs223", "coeff_ue": 22 },
+            { "nom": "Physique des ondes 2 : ondes mécaniques, acoustiques", "code": "El221", "coeff_ue": 26 },
+            { "nom": "Electronique 2", "code": "Phs224", "coeff_ue": 36 },
+            { "nom": "Pratique de la programmation en Python 2", "code": "Ph225", "coeff_ue": 17 }
           ]
         },
         {
