@@ -136,7 +136,7 @@
           "pole": "SCIENCES FONDAMENTALES","coeff_ects": 7,
           "matieres": [
             { "nom": "Algebre lineaire et bilinéaire", "code": "Ma221", "coeff_ue": 42 },
-            { "nom": "ANALYSE ET PROBABILITÉS", "code": "Ma222", "coeff_ue": 44 },
+            { "nom": "Analyse et probabilités", "code": "Ma222", "coeff_ue": 44 },
             { "nom": "Genie mathematique", "code": "Ma223", "coeff_ue": 14}
           ]
         },
@@ -161,18 +161,18 @@
         {
           "pole":"AERONAUTIQUE ET SPATIAL","coeff_ects": 6,
           "matieres": [
-            { "nom": "Aéronautique 1", "code": "Aé221", "coeff_ue": 16 },
-            { "nom": "Grand projet programmation", "code": "Phv222", "coeff_ue": 19 },
-            { "nom": "Projet ROVER", "code": "Mf221", "coeff_ue": 25 },
+            { "nom": "Aéronautique 2", "code": "Aé221", "coeff_ue": 16 },
+            { "nom": "Physique de l'univers", "code": "Phv222", "coeff_ue": 19 },
+            { "nom": "Mécanique des fluides", "code": "Mf221", "coeff_ue": 25 },
             { "nom": "Projet ROVER", "code": "Gp222", "coeff_ue": 39 }
           ]
         },
         {
           "pole":"SCIENCES HUMAINES ET LANGUES","coeff_ects": 1,
           "matieres": [
-            { "nom": "Ethique de l'ingénieur aérospatial", "code": "Sh222", "coeff_ue": 22 },
-            { "nom": "English for aircraft engines", "code": "La221", "coeff_ue": 63 },
-            { "nom": "Anglais : préparation TOEIC / Advanced english", "code": "La223", "coeff_ue": 15 }
+            { "nom": "Enseignement Voltaire", "code": "Sh222", "coeff_ue": 22 },
+            { "nom": "Business English", "code": "La221", "coeff_ue": 63 },
+            { "nom": "TOEIC", "code": "La223", "coeff_ue": 15 }
           ]
         },
                 {
