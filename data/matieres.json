@@ -262,23 +262,24 @@
                         {"nom": "RÉSEAUX EMBARQUÉS POUR L'AÉRONAUTIQUE", "code": "In321", "coeff_ue": 27}
                     ]
                 },
-                                {
-                    "pole" :"CONNAISSANCE DE L'ENTREPRISE ET INSERTION PROFESSIONNELLE 2","coeff_ects": 4,
-                    "matieres":[
-                        {"nom": "MODÉLISATION ET ANALYSE DYNAMIQUE DES AÉRONEFS", "code": "Sh322", "coeff_ue": 21},
-                        {"nom": "AÉRODYNAMIQUE 2", "code": "Sh323", "coeff_ue": 30},
-                        {"nom": "INITIATION À LA CFD", "code": "Mi321", "coeff_ue": 25},
-                        {"nom": "INTRODUCTION AU VOL VERTICAL", "code": "Mi322", "coeff_ue": 14},
-                        {"nom": "INTRODUCTION AU VOL VERTICAL", "code": "Mi323", "coeff_ue": 10}
-                    ]
-                },
                 {
-                    "pole" :"TRONC COMMUN : SCIENCES HUMAINES ET LANGUES 2","coeff_ects": 2,
+                    "pole" :"TRONC COMMUN : Connaissance de l'entreprise et insertion professionnelle 2","coeff_ects": 4,
                     "matieres":[
-                        {"nom": "MODÉLISATION ET ANALYSE DYNAMIQUE DES AÉRONEFS", "code": "Sh322", "coeff_ue": 84},
-                        {"nom": "AÉRODYNAMIQUE 2", "code": "Sh323", "coeff_ue": 16}
+                        {"nom": "PROSPECTIVE", "code": "Sh322", "coeff_ue": 21},
+                        {"nom": "Responsabilité sociétale des entreprises", "code": "Sh323", "coeff_ue": 30},
+                        {"nom": "EXEL", "code": "Mi321", "coeff_ue": 25},
+                        {"nom": "Soft Skills", "code": "Mi322", "coeff_ue": 14},
+                        {"nom": "Introduction à l'innovation et à l'entrepreneuriat", "code": "Mi323", "coeff_ue": 10}
                     ]
                 },
+                                {
+                    "pole" :"TRONC COMMUN : Sciences humaines et langues 2","coeff_ects": 2,
+                    "matieres":[
+                        {"nom": "General engineering English 2", "code": "La321", "coeff_ue": 84},
+                        {"nom": "TOEIC (niveau minimal : 730)", "code": "La322", "coeff_ue": 16}
+                    ]
+                },
+
                 {
                     "pole" :"CONNAISSANCE DE L'ENTREPRISE ET INSERTION PROFESSIONNELLE","coeff_ects": 4,
                     "matieres":[
